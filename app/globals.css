@@ -126,9 +126,9 @@
   --sidebar-accent-foreground: oklch(0.2264 0 0);
   --sidebar-border: oklch(0.9219 0 0);
   --sidebar-ring: oklch(0.2264 0 0);
-  --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --radius: 1rem;
   --shadow-2xs: 0px 4px 8px 0px hsl(0 0% 0% / 0.05);
   --shadow-xs: 0px 4px 8px 0px hsl(0 0% 0% / 0.05);
@@ -145,6 +145,8 @@
   --shadow-2xl: 0px 4px 8px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0px;
   --spacing: 0.25rem;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
 }
 
 .dark {
@@ -180,9 +182,9 @@
   --sidebar-accent-foreground: oklch(0.9821 0 0);
   --sidebar-border: oklch(0.2686 0 0);
   --sidebar-ring: oklch(1 0 0);
-  --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --radius: 1rem;
   --shadow-2xs: 0px 4px 8px 0px hsl(0 0% 0% / 0.25);
   --shadow-xs: 0px 4px 8px 0px hsl(0 0% 0% / 0.25);
@@ -209,6 +211,24 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
   }
 }
 
@@ -267,5 +287,88 @@ body {
 
   .animate-accordion-up {
     animation: accordion-up 0.2s ease-out;
+  }
+}
+
+.tetrominos {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-112px, -96px);
+}
+
+.tetromino {
+  width: 96px;
+  height: 112px;
+  position: absolute;
+  transition: all ease 0.3s;
+  background: url('data:image/svg+xml;utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 684"%3E%3Cpath fill="%23010101" d="M305.7 0L0 170.9v342.3L305.7 684 612 513.2V170.9L305.7 0z"/%3E%3Cpath fill="%23fff" d="M305.7 80.1l-233.6 131 233.6 131 234.2-131-234.2-131"/%3E%3C/svg%3E')
+    no-repeat top center;
+}
+
+.box1 {
+  animation: tetromino1 1.5s ease-out infinite;
+}
+
+.box2 {
+  animation: tetromino2 1.5s ease-out infinite;
+}
+
+.box3 {
+  animation: tetromino3 1.5s ease-out infinite;
+  z-index: 2;
+}
+
+.box4 {
+  animation: tetromino4 1.5s ease-out infinite;
+}
+
+@keyframes tetromino1 {
+  0%,
+  40% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(48px, -27px);
+  }
+  60%,
+  100% {
+    transform: translate(96px, 0);
+  }
+}
+
+@keyframes tetromino2 {
+  0%,
+  20% {
+    transform: translate(96px, 0);
+  }
+  40%,
+  100% {
+    transform: translate(144px, 27px);
+  }
+}
+
+@keyframes tetromino3 {
+  0% {
+    transform: translate(144px, 27px);
+  }
+  20%,
+  60% {
+    transform: translate(96px, 54px);
+  }
+  90%,
+  100% {
+    transform: translate(48px, 27px);
+  }
+}
+
+@keyframes tetromino4 {
+  0%,
+  60% {
+    transform: translate(48px, 27px);
+  }
+  90%,
+  100% {
+    transform: translate(0, 0);
   }
 }

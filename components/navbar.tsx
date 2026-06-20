@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import { fadeIn } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { BookCallLiquidButton } from "./ui/button-1";
 
 interface NavbarProps {
   className?: string;
@@ -61,12 +62,21 @@ function Navbar({ className }: NavbarProps) {
                 <Leaf className="w-5 h-5 text-secondary-foreground" />
               </div>
               <span className="text-xl font-semibold text-primary-foreground">
-                Nox
+                Jonas Alfonso
               </span>
             </div>
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
+              <Button
+                variant="ghost"
+                onClick={() => scrollToSection("services")}
+                onKeyDown={(e) => handleKeyDown(e, "services")}
+                className="text-sm text-primary-foreground hover:text-primary transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm px-2 py-1"
+                aria-label="Navigate to Services section"
+              >
+                Services
+              </Button>
               <Button
                 variant="ghost"
                 onClick={() => scrollToSection("features")}
@@ -76,37 +86,11 @@ function Navbar({ className }: NavbarProps) {
               >
                 Features
               </Button>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("compliance")}
-                onKeyDown={(e) => handleKeyDown(e, "compliance")}
-                className="text-sm text-primary-foreground hover:text-primary transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm px-2 py-1"
-                aria-label="Navigate to Compliance section"
-              >
-                Compliance
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("pricing")}
-                onKeyDown={(e) => handleKeyDown(e, "pricing")}
-                className="text-sm text-primary-foreground hover:text-primary transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm px-2 py-1"
-                aria-label="Navigate to Pricing section"
-              >
-                Pricing
-              </Button>
             </div>
 
             {/* Desktop Action Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <Button
-                variant="ghost"
-                className="text-primary-foreground hover:text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                Log in
-              </Button>
-              <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-sm">
-                Try for free
-              </Button>
+              <BookCallLiquidButton className="h-11" href="#book-call" />
             </div>
 
             {/* Mobile menu Button */}
@@ -146,6 +130,14 @@ function Navbar({ className }: NavbarProps) {
                 <div className="absolute inset-0 bg-primary rounded-b-2xl"></div>
                 <div className="relative z-10">
                   <Button
+                    onClick={() => scrollToSection("services")}
+                    onKeyDown={(e) => handleKeyDown(e, "services")}
+                    className="block w-full text-left px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
+                    aria-label="Navigate to Services section"
+                  >
+                    Services
+                  </Button>
+                  <Button
                     onClick={() => scrollToSection("features")}
                     onKeyDown={(e) => handleKeyDown(e, "features")}
                     className="block w-full text-left px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
@@ -153,32 +145,13 @@ function Navbar({ className }: NavbarProps) {
                   >
                     Features
                   </Button>
-                  <Button
-                    onClick={() => scrollToSection("compliance")}
-                    onKeyDown={(e) => handleKeyDown(e, "compliance")}
-                    className="block w-full text-left px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
-                    aria-label="Navigate to Compliance section"
-                  >
-                    Compliance
-                  </Button>
-                  <Button
-                    onClick={() => scrollToSection("pricing")}
-                    onKeyDown={(e) => handleKeyDown(e, "pricing")}
-                    className="block w-full text-left px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
-                    aria-label="Navigate to Pricing section"
-                  >
-                    Pricing
-                  </Button>
                   <div className="pt-4 pb-3 border-t border-border">
                     <div className="flex flex-col space-y-2 px-3">
                       <Button
-                        variant="ghost"
-                        className="w-full justify-start text-primary-foreground hover:text-primary-foreground hover:bg-primary-foreground/10"
+                        onClick={() => scrollToSection("book-call")}
+                        className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-sm"
                       >
-                        Log in
-                      </Button>
-                      <Button className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-sm">
-                        Try for free
+                        Book a call
                       </Button>
                     </div>
                   </div>

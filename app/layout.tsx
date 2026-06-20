@@ -1,23 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title:
-    "Nox - AI Automation Platform | Say it once, watch AI agents do it forever",
+  title: "Jonas Alfonso | AI Automation Agency",
   description:
-    "Automate sales, meetings, operations, support, and admin tasks without writing a line of code. Used by global enterprises like Monzo, Guild, CLEO, TradeMe, and Paradigm.",
+    "AI-powered systems for chatbots, voice agents, receptionists, websites, appointment booking, lead generation, and business automation.",
   keywords: [
     "AI automation",
     "business automation",
@@ -25,11 +13,11 @@ export const metadata: Metadata = {
     "workflow automation",
     "enterprise automation",
   ],
-  authors: [{ name: "Nox" }],
+  authors: [{ name: "Jonas Alfonso" }],
   openGraph: {
-    title: "Nox - AI Automation Platform",
+    title: "Jonas Alfonso | AI Automation Agency",
     description:
-      "Say it once, watch AI agents do it forever. Automate your business processes without coding.",
+      "AI-powered systems that automate operations, generate leads, and help businesses grow around the clock.",
     type: "website",
   },
 };
@@ -41,21 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          "font-sans antialiased relative",
-          geistSans.variable,
-          geistMono.variable,
-        )}
-      >
-        <div className="grid grid-cols-12 mx-auto border-x-[1px] border-primary/10 relative">
-          <div className="hidden md:block h-full col-span-1 w-full text-primary/5 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"></div>
-          <div className="col-span-12 md:col-span-10 border-x-[1px]">
-            {children}
-          </div>
-          <div className="hidden md:block h-full w-full col-span-1 text-primary/5 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"></div>
-        </div>
-      </body>
+      <body className={cn("font-sans antialiased relative")}>{children}</body>
     </html>
   );
 }

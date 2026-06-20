@@ -18,25 +18,25 @@ export function ChatVisual() {
           viewport={{ once: true, margin: "-50px" }}
         >
           <div className="flex flex-col items-start gap-4">
-            <div className="bg-primary text-primary-foreground max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
+            <div className="bg-black text-white max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
               Need to automate our customer support
             </div>
-            <div className="bg-primary text-primary-foreground max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
+            <div className="bg-black text-white max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
               Can you handle ticket routing?
             </div>
           </div>
           <div className="flex flex-col items-end gap-2">
-            <div className="bg-background text-foreground/80 max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
+            <div className="bg-black/5 text-black/80 max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
               Absolutely! I can analyze tickets and route them to the right team
             </div>
-            <div className="bg-background text-foreground/80 max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
+            <div className="bg-black/5 text-black/80 max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
               I'll also provide initial responses for common queries
             </div>
-            <div className="bg-background text-foreground/80 max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
+            <div className="bg-black/5 text-black/80 max-w-[280px] rounded-sm px-3 py-2 shadow-sm">
               Setting up the workflow now...
             </div>
             <div className="group-hover:animate-hover relative z-10">
-              <div className="border-border/80 bg-foreground text-primary-foreground flex -translate-x-24 rounded-lg border px-2 py-0.5">
+              <div className="border-black/20 bg-black text-white flex -translate-x-24 rounded-lg border px-2 py-0.5">
                 AI Agent
                 <div className="absolute -top-6 -left-3">
                   <svg
@@ -49,7 +49,7 @@ export function ChatVisual() {
                   >
                     <path
                       d="M2.64853 1.49706L15.7029 14.5515C16.4589 15.3074 15.9235 16.6 14.8544 16.6H8.69848C8.06196 16.6 7.45151 16.8529 7.00143 17.3029L2.64853 21.6558C1.89257 22.4118 0.6 21.8764 0.6 20.8073V2.34558C0.6 1.2765 1.89257 0.741098 2.64853 1.49706Z"
-                      className="fill-foreground stroke-border/80 stroke-1"
+                      className="fill-black stroke-black/20 stroke-1"
                     />
                   </svg>
                 </div>

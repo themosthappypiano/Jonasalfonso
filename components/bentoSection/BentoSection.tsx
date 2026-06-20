@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { bentoDescription, bentoGrid, bentoHeader } from "@/lib/animations";
-import CustomSeperator from "../custom/Seperator";
+import { bentoGrid } from "@/lib/animations";
+import { cn } from "@/lib/utils";
 import { BentoGrid } from "./BentoGrid";
 
 export interface BentoSectionProps {
@@ -11,52 +11,29 @@ export interface BentoSectionProps {
 
 export function BentoSection({ className }: BentoSectionProps) {
   return (
-    <>
-      <CustomSeperator />
-      <section
-        data-slot="section"
-        className={`bg-background text-foreground relative px-4 md:p-0  ${
-          className || ""
-        }`}
-        aria-labelledby="bento-section-title"
+    <section
+      id="features"
+      data-slot="section"
+      className={cn(
+        "relative box-border h-screen overflow-hidden bg-black px-3 py-8 text-black md:px-6 md:py-10",
+        className,
+      )}
+    >
+      <motion.div
+        className="relative z-10 h-full w-full overflow-hidden rounded-[32px]"
+        variants={bentoGrid}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
       >
-        <div className="max-w-container mx-auto flex flex-col items-center gap-6 px-2 md:px-4 py-10">
-          <motion.h2
-            id="bento-section-title"
-            className="text-3xl sm:text-4xl font-bold text-primary leading-tight"
-            variants={bentoHeader}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            Build AI agents that work like{" "}
-            <span className="text-muted-foreground italic font-normal">
-              teammates
-            </span>
-          </motion.h2>
-
-          <motion.p
-            className="text-base text-muted-foreground max-w-[840px] md:text-center text-balance"
-            variants={bentoDescription}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            Create autonomous workflows that handle complex tasks end-to-end,
-            with the intelligence to know when to act independently and when to
-            collaborate.
-          </motion.p>
-
-          <motion.div
-            variants={bentoGrid}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            <BentoGrid />
-          </motion.div>
+        <div className="relative z-10 h-full w-full">
+          <BentoGrid />
         </div>
-      </section>
-    </>
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-16 bg-black md:h-20" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-12 bg-black md:h-14" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-30 w-8 bg-black md:w-11" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-30 w-3 bg-black/80 md:w-4" />
+      </motion.div>
+    </section>
   );
 }

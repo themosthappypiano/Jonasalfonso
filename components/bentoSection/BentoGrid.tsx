@@ -1,142 +1,128 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  BrainIcon,
-  ClockIcon,
-  ShieldIcon,
-  TrendingUpIcon,
-  WorkflowIcon,
-  WrenchIcon,
-} from "lucide-react";
-import { bentoCard, bentoCardLarge } from "@/lib/animations";
+import { ClockIcon, MessageCircleMore, ShieldIcon } from "lucide-react";
+import ScrollAdventure from "@/components/ui/animated-scroll";
+import { Stats } from "@/components/ui/statistics-card";
+import { cn } from "@/lib/utils";
 import { AnimatedListSection } from "./AnimatedListSection";
-import { BentoCard } from "./BentoCard";
-import { BentoCardLarge } from "./BentoCardLarge";
 import { OrbitingCirclesDemo } from "./OrbitingCirclesDemo";
-import { TerminalDemo } from "./TerminalDemo";
-import { BrowserVisual } from "./visuals/BrowserVisual";
-import { ChatVisual } from "./visuals/ChatVisual";
-import { ImageVisual } from "./visuals/ImageVisual";
 
 export interface BentoGridProps {
   className?: string;
 }
 
-export function BentoGrid({ className }: BentoGridProps) {
+function PageCopy({
+  description,
+  eyebrow,
+  icon: Icon,
+  title,
+}: {
+  description: string;
+  eyebrow: string;
+  icon: typeof MessageCircleMore;
+  title: string;
+}) {
+  return (
+    <div className="flex h-full flex-col justify-center p-8 text-white md:p-12">
+      <div className="mb-6 flex size-12 items-center justify-center rounded-full bg-white text-black">
+        <Icon className="size-6 stroke-1.5" />
+      </div>
+      <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
+        {eyebrow}
+      </p>
+      <h3 className="max-w-xl text-4xl font-semibold leading-none tracking-tight md:text-6xl">
+        {title}
+      </h3>
+      <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">
+        {description}
+      </p>
+    </div>
+  );
+}
+
+function VisualShell({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
     <div
-      className={`grid grid-cols-12 gap-4 items-stretch w-full px-1 md:px-6 max-w-7xl mt-6 sm:mt-10 md:mt-10 ${
-        className || ""
-      }`}
+      className={cn(
+        "flex h-full items-center justify-center bg-white p-5 text-black md:p-8",
+        className,
+      )}
     >
-      <motion.div variants={bentoCardLarge} className="col-span-12">
-        <BentoCardLarge
-          title="Autonomous Workflows"
-          description={[
-            "Set up tasks once and let your AI agent run them end-to-end — research, outreach, reporting, and more, all handled without micromanagement.",
-            "Never worry about subscriptions and lock-ins.",
-          ]}
-          icon={WrenchIcon}
-          visual={
-            <BrowserVisual
-              src="/hero.jpg"
-              alt="AI automation dashboard showing workflow management"
-            />
-          }
-          aria-label="Autonomous Workflows - AI agents that handle complex tasks independently"
-        />
-      </motion.div>
+      <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-lg border border-black/10 bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]">
+        {children}
+      </div>
+    </div>
+  );
+}
 
-      <motion.div
-        variants={bentoCard}
-        className="col-span-12 md:col-span-6 lg:col-span-5"
-      >
-        <BentoCard
-          title="Smart Context Awareness"
-          description={[
-            "Understands history, intent, and company knowledge so it acts less like a script, more like a real teammate.",
-            "Intent-based context handling.",
-          ]}
-          icon={BrainIcon}
-          visual={<ChatVisual />}
-          colSpan={{ mobile: 12, tablet: 6, desktop: 5 }}
-          aria-label="Smart Context Awareness - AI that understands context and intent"
-        />
-      </motion.div>
+const pages = [
+  {
+    leftContent: (
+      <VisualShell className="p-0">
+        <Stats />
+      </VisualShell>
+    ),
+    rightContent: (
+      <PageCopy
+        description="A sales agent trained on your calls, CRM notes, scripts, FAQs, and best objections so it sells like your best human rep."
+        eyebrow="Conversion"
+        icon={MessageCircleMore}
+        title="Sales agents that convert"
+      />
+    ),
+  },
+  {
+    leftContent: (
+      <PageCopy
+        description="Connects securely with the business tools your team already uses, without turning your automation into a black box."
+        eyebrow="Trust"
+        icon={ShieldIcon}
+        title="Enterprise security"
+      />
+    ),
+    rightContent: (
+      <VisualShell className="p-2 md:p-3">
+        <div className="w-full scale-125">
+          <OrbitingCirclesDemo />
+        </div>
+      </VisualShell>
+    ),
+  },
+  {
+    leftContent: (
+      <VisualShell className="p-2 md:p-3">
+        <div className="flex h-full w-full translate-y-10 items-center justify-center scale-115">
+          <AnimatedListSection
+            className="h-[520px] max-w-xl"
+            showFade={false}
+          />
+        </div>
+      </VisualShell>
+    ),
+    rightContent: (
+      <PageCopy
+        description="Track performance, monitor workflows, and know exactly what your agents are doing across leads, calls, and bookings."
+        eyebrow="Visibility"
+        icon={ClockIcon}
+        title="Real-time monitoring"
+      />
+    ),
+  },
+];
 
-      <motion.div
-        variants={bentoCard}
-        className="col-span-12 md:col-span-6 lg:col-span-7"
-      >
-        <BentoCard
-          title="Seamless Integration"
-          description={[
-            "Connect with your existing tools and workflows without disrupting your current processes.",
-            "No extra dependencies, no extra maintenance.",
-          ]}
-          icon={WorkflowIcon}
-          visual={
-            <ImageVisual
-              src="/hero.jpg"
-              alt="Integration dashboard showing connected tools"
-            />
-          }
-          colSpan={{ mobile: 12, tablet: 6, desktop: 7 }}
-          aria-label="Seamless Integration - Connect with existing tools and workflows"
-        />
-      </motion.div>
-
-      <motion.div
-        variants={bentoCard}
-        className="col-span-12 md:col-span-6 lg:col-span-4"
-      >
-        <BentoCard
-          title="Continuous Learning"
-          description={[
-            "Learns from usage and feedback, becoming smarter with every task.",
-            "Adapts to your business patterns automatically.",
-          ]}
-          icon={TrendingUpIcon}
-          visual={<TerminalDemo />}
-          colSpan={{ mobile: 12, tablet: 6, desktop: 4 }}
-          aria-label="Continuous Learning - AI that improves with every interaction"
-        />
-      </motion.div>
-
-      <motion.div
-        variants={bentoCard}
-        className="col-span-12 md:col-span-6 lg:col-span-4"
-      >
-        <BentoCard
-          title="Enterprise Security"
-          description={[
-            "Built with enterprise-grade security and compliance standards.",
-            "Your data stays secure and private.",
-          ]}
-          icon={ShieldIcon}
-          visual={<OrbitingCirclesDemo />}
-          colSpan={{ mobile: 12, tablet: 6, desktop: 4 }}
-          aria-label="Enterprise Security - Secure and compliant AI automation"
-        />
-      </motion.div>
-
-      <motion.div
-        variants={bentoCard}
-        className="col-span-12 md:col-span-12 lg:col-span-4"
-      >
-        <BentoCard
-          title="Real-time Monitoring"
-          description={[
-            "Track performance, monitor workflows, and get insights into your automation efficiency.",
-            "Always know what your agents are doing.",
-          ]}
-          icon={ClockIcon}
-          visual={<AnimatedListSection />}
-          colSpan={{ mobile: 12, tablet: 12, desktop: 4 }}
-          aria-label="Real-time Monitoring - Track and monitor AI agent performance"
-        />
-      </motion.div>
+export function BentoGrid({ className }: BentoGridProps) {
+  return (
+    <div className={cn("h-full w-full", className)}>
+      <ScrollAdventure
+        className="h-full rounded-[28px] shadow-none"
+        pages={pages}
+      />
     </div>
   );
 }

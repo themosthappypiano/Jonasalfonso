@@ -46,7 +46,7 @@ export function TerminalDemo() {
           <span className="pl-2">- Escalation handling</span>
         </AnimatedSpan>
 
-        <TypingAnimation className="text-muted-foreground text-wrap !px-2.5">
+        <TypingAnimation className="text-white/70 text-wrap !px-2.5">
           Success! AI agent is now handling support.
         </TypingAnimation>
       </Terminal>

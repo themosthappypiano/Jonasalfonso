@@ -1,37 +1,31 @@
 "use client";
 
 import { BentoSection } from "@/components/bentoSection/BentoSection";
+import { AgencySystemsSection } from "@/components/custom/AgencySystemsSection";
+import { BookCallSection } from "@/components/custom/BookCallSection";
 import ComplianceSection from "@/components/custom/ComplianceSection";
-import { FAQSection } from "@/components/custom/FAQSection";
 import { FooterSection } from "@/components/custom/FooterSection";
 import HeroSection from "@/components/custom/HeroSection";
-import { PricingSection } from "@/components/custom/PricingSection";
-import Navbar from "../components/navbar";
+import { HeroSummarySection } from "@/components/custom/HeroSummarySection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background py-4">
-      <Navbar />
-
+    <div className="min-h-screen bg-background">
       <section id="hero">
         <HeroSection />
       </section>
 
-      <section id="features">
-        <BentoSection />
-      </section>
+      <HeroSummarySection />
+
+      <BentoSection />
 
       <section id="compliance">
         <ComplianceSection />
       </section>
 
-      <section id="pricing">
-        <PricingSection />
-      </section>
+      <AgencySystemsSection />
 
-      <section id="faq">
-        <FAQSection />
-      </section>
+      <BookCallSection />
 
       <FooterSection />
     </div>

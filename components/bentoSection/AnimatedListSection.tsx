@@ -13,91 +13,92 @@ interface Item {
   time: string;
 }
 
-let notifications = [
+const notifications = [
   {
-    name: "Customer ticket resolved",
-    description: "AI Agent",
-    time: "2m ago",
-    icon: "🎯",
+    name: "Website visitor qualified",
+    description: "AI Chatbot",
+    time: "now",
+    icon: "💬",
     color: "#00C9A7",
   },
   {
-    name: "Lead qualification complete",
-    description: "Sales Bot",
-    time: "5m ago",
-    icon: "💼",
+    name: "Inbound call answered",
+    description: "AI Voice Agent",
+    time: "1m ago",
+    icon: "☎️",
     color: "#FFB800",
   },
   {
-    name: "Meeting scheduled",
-    description: "Calendar Agent",
-    time: "8m ago",
+    name: "New appointment booked",
+    description: "Appointment System",
+    time: "2m ago",
     icon: "📅",
     color: "#FF3D71",
   },
   {
-    name: "Report generated",
-    description: "Analytics Bot",
-    time: "12m ago",
-    icon: "📊",
+    name: "Lead routed to inbox",
+    description: "AI Receptionist",
+    time: "3m ago",
+    icon: "📨",
     color: "#1E86FF",
   },
   {
-    name: "Email campaign sent",
-    description: "Marketing Agent",
-    time: "15m ago",
-    icon: "📧",
+    name: "Offer personalized",
+    description: "AI Website",
+    time: "4m ago",
+    icon: "⚡",
     color: "#8B5CF6",
   },
   {
-    name: "Inventory updated",
-    description: "Operations Bot",
-    time: "18m ago",
-    icon: "📦",
+    name: "Follow-up reminder sent",
+    description: "Automation Workflow",
+    time: "5m ago",
+    icon: "✅",
     color: "#10B981",
   },
 ];
 
-notifications = Array.from({ length: 10 }, () => notifications).flat();
-
-const Notification = ({ name, description, icon, time }: Item) => {
+const Notification = ({ name, description, icon, time, color }: Item) => {
   return (
     <figure
       className={cn(
-        "relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-xl p-2",
+        "relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-xl border border-black/10 p-2",
         // animation styles
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
         // light styles
-        "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-        // dark styles
-        "transform-gpu dark:bg-transparent dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)]",
+        "bg-white text-black shadow-[0_18px_40px_rgba(0,0,0,0.22)]",
       )}
     >
       <div className="flex flex-row items-center gap-3">
         <div
-          className="flex size-10 items-center justify-center rounded-2xl bg-gradient-to-b from-chart-1/10 via-chart-2/10 to-chart-3/10 backdrop-blur-3xl"
-          // style={{
-          //   backgroundColor: color,
-          // }}
+          className="flex size-10 items-center justify-center rounded-2xl backdrop-blur-3xl"
+          style={{
+            backgroundColor: `${color}22`,
+            boxShadow: `inset 0 0 0 1px ${color}55`,
+          }}
         >
           <span className="text-sm">{icon}</span>
         </div>
         <div className="flex flex-col overflow-hidden">
-          <figcaption className="flex flex-row items-center text-lg font-medium whitespace-pre dark:text-white">
-            <span className="text-sm sm:text-md">{name}</span>
+          <figcaption className="flex flex-row items-center text-lg font-medium whitespace-pre text-black">
+            <span className="text-sm sm:text-base">{name}</span>
             <span className="mx-1">·</span>
-            <span className="text-xs text-gray-500">{time}</span>
+            <span className="text-xs text-black/45">{time}</span>
           </figcaption>
-          <p className="text-sm font-normal dark:text-white/60">
-            {description}
-          </p>
+          <p className="text-sm font-normal text-black/60">{description}</p>
         </div>
       </div>
     </figure>
   );
 };
 
-export function AnimatedListSection({ className }: { className?: string }) {
+export function AnimatedListSection({
+  className,
+  showFade = true,
+}: {
+  className?: string;
+  showFade?: boolean;
+}) {
   return (
     <motion.div
       className={cn(
@@ -117,7 +118,9 @@ export function AnimatedListSection({ className }: { className?: string }) {
         ))}
       </AnimatedList>
 
-      <div className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t"></div>
+      {showFade && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black" />
+      )}
     </motion.div>
   );
 }
