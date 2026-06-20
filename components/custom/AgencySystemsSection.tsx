@@ -17,9 +17,6 @@ const services = [
     gradient: "purple",
     index: "001",
     title: "AI Chatbots",
-    imgSrc:
-      "https://i.postimg.cc/jSzhb1Xg/Chat-GPT-Image-Jun-18-2025-04-51-54-PM.png",
-    imgAlt: "Chatbot conversation interface on a laptop screen",
   },
   {
     badgeColor: "#06B6D4",
@@ -29,9 +26,6 @@ const services = [
     gradient: "blue",
     index: "002",
     title: "AI Voice Agents",
-    imgSrc:
-      "https://i.postimg.cc/g2vKW7DT/Chat-GPT-Image-Jun-18-2025-04-52-09-PM.png",
-    imgAlt: "Voice assistant speaker with colorful light",
   },
   {
     badgeColor: "#8B5CF6",
@@ -41,9 +35,6 @@ const services = [
     gradient: "gray",
     index: "003",
     title: "AI Receptionists",
-    imgSrc:
-      "https://i.postimg.cc/W1M7vynC/Chat-GPT-Image-Jun-18-2025-04-54-35-PM.png",
-    imgAlt: "Professional reception desk with a laptop",
   },
   {
     badgeColor: "#10B981",
@@ -53,9 +44,6 @@ const services = [
     gradient: "green",
     index: "004",
     title: "Custom Builds",
-    imgSrc:
-      "https://i.postimg.cc/0ypCs4f3/Chat-GPT-Image-Jun-19-2025-09-51-48-AM.png",
-    imgAlt: "Custom software code on a developer workstation",
   },
   {
     badgeColor: "#06B6D4",
@@ -65,9 +53,6 @@ const services = [
     gradient: "blue",
     index: "005",
     title: "Appointment Systems",
-    imgSrc:
-      "https://i.postimg.cc/0ypCs4f3/Chat-GPT-Image-Jun-19-2025-09-51-48-AM.png",
-    imgAlt: "Calendar and planning notes on a desk",
   },
 ];
 
@@ -138,7 +123,6 @@ export function AgencySystemsSection() {
                 gradient={
                   service.gradient as "blue" | "purple" | "gray" | "green"
                 }
-                imageUrl={service.imgSrc}
                 title={service.title}
               />
             </motion.div>

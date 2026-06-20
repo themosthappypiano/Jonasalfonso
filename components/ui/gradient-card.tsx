@@ -3,7 +3,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -34,7 +33,6 @@ export interface GradientCardProps
   description: string;
   ctaText: string;
   ctaHref: string;
-  imageUrl: string;
 }
 
 const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
@@ -47,7 +45,6 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
       ctaText,
       description,
       gradient,
-      imageUrl,
       title,
       ...props
     },
@@ -66,24 +63,7 @@ const GradientCard = React.forwardRef<HTMLDivElement, GradientCardProps>(
         whileHover="hover"
       >
         <div className={cn(cardVariants({ gradient }), className)} {...props}>
-          <motion.div
-            className="pointer-events-none absolute -right-1/4 -bottom-1/4 h-3/4 w-3/4 opacity-80"
-            transition={{ damping: 15, stiffness: 400, type: "spring" }}
-            variants={{
-              hover: { rotate: 3, scale: 1.1 },
-              rest: { rotate: 0, scale: 1 },
-            }}
-          >
-            <Image
-              alt={`${title} background graphic`}
-              className="object-cover"
-              fill
-              sizes="(min-width: 1024px) 320px, 70vw"
-              src={imageUrl}
-            />
-          </motion.div>
-
-          <div className="z-10 flex h-full flex-col">
+          <div className="flex h-full flex-col">
             <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-background/50 px-3 py-1 text-sm font-medium text-foreground/80 backdrop-blur-sm">
               <span
                 className="h-2 w-2 rounded-full"
