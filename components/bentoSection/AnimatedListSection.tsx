@@ -79,11 +79,13 @@ const Notification = ({ name, description, icon, time, color }: Item) => {
         >
           <span className="text-sm">{icon}</span>
         </div>
-        <div className="flex flex-col overflow-hidden">
-          <figcaption className="flex flex-row items-center text-lg font-medium whitespace-pre text-black">
-            <span className="text-sm sm:text-base">{name}</span>
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <figcaption className="flex min-w-0 flex-row items-center font-medium text-black">
+            <span className="truncate text-xs sm:text-base">{name}</span>
             <span className="mx-1">·</span>
-            <span className="text-xs text-black/45">{time}</span>
+            <span className="shrink-0 text-[10px] text-black/45 sm:text-xs">
+              {time}
+            </span>
           </figcaption>
           <p className="text-sm font-normal text-black/60">{description}</p>
         </div>

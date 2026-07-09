@@ -15,12 +15,12 @@ export function BentoSection({ className }: BentoSectionProps) {
       id="features"
       data-slot="section"
       className={cn(
-        "relative box-border h-screen overflow-hidden bg-black px-3 py-8 text-black md:px-6 md:py-10",
+        "relative box-border overflow-hidden bg-black px-4 py-12 text-black md:h-screen md:px-6 md:py-10",
         className,
       )}
     >
       <motion.div
-        className="relative z-10 h-full w-full overflow-hidden rounded-[32px]"
+        className="relative z-10 h-full w-full overflow-hidden rounded-2xl md:rounded-[32px]"
         variants={bentoGrid}
         initial="hidden"
         whileInView="visible"
@@ -29,10 +29,10 @@ export function BentoSection({ className }: BentoSectionProps) {
         <div className="relative z-10 h-full w-full">
           <BentoGrid />
         </div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-16 bg-black md:h-20" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-12 bg-black md:h-14" />
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-30 w-8 bg-black md:w-11" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-30 w-3 bg-black/80 md:w-4" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 hidden h-20 bg-black md:block" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 hidden h-14 bg-black md:block" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-30 hidden w-11 bg-black md:block" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-30 hidden w-4 bg-black/80 md:block" />
       </motion.div>
     </section>
   );

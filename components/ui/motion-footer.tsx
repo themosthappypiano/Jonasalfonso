@@ -267,10 +267,10 @@ export function CinematicFooter() {
 
       <div
         ref={wrapperRef}
-        className="relative h-screen w-full"
+        className="relative h-[100svh] min-h-[620px] w-full md:h-screen md:min-h-0"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
-        <footer className="cinematic-footer-wrapper fixed bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden bg-black !text-white">
+        <footer className="cinematic-footer-wrapper fixed bottom-0 left-0 flex h-[100svh] min-h-[620px] w-full flex-col justify-between overflow-hidden bg-black !text-white md:h-screen md:min-h-0">
           <AnimatedGradientBackground
             Breathing
             animationSpeed={0.018}
@@ -302,30 +302,30 @@ export function CinematicFooter() {
             JONAS
           </div>
 
-          <div className="absolute left-0 top-12 z-10 w-full -rotate-2 scale-110 overflow-hidden border-y border-white/10 bg-black/70 py-4 shadow-2xl backdrop-blur-md">
+          <div className="absolute left-0 top-8 z-10 w-full -rotate-2 scale-110 overflow-hidden border-y border-white/10 bg-black/70 py-3 shadow-2xl backdrop-blur-md md:top-12 md:py-4">
             <div className="flex w-max animate-footer-scroll-marquee text-xs font-bold uppercase tracking-[0.3em] text-white/55 md:text-sm">
               <MarqueeItem />
               <MarqueeItem />
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto mt-20 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6">
+          <div className="relative z-10 mx-auto mt-16 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-5 md:mt-20 md:px-6">
             <h2
               ref={headingRef}
-              className="footer-text-glow mb-12 text-center text-5xl font-black tracking-tighter md:text-8xl"
+              className="footer-text-glow mb-7 text-center text-4xl font-black tracking-tighter sm:text-5xl md:mb-12 md:text-8xl"
             >
               Ready to automate?
             </h2>
 
             <div
               ref={linksRef}
-              className="flex w-full flex-col items-center gap-6"
+              className="flex w-full flex-col items-center gap-4 md:gap-6"
             >
-              <div className="flex w-full flex-wrap justify-center gap-4">
+              <div className="flex w-full flex-col items-center justify-center gap-3 min-[390px]:flex-row md:flex-wrap md:gap-4">
                 <MagneticButton
                   as="a"
                   href="#services"
-                  className="footer-glass-pill flex items-center gap-3 rounded-full px-10 py-5 text-sm font-bold text-white md:text-base"
+                  className="footer-glass-pill flex h-12 w-[168px] items-center justify-center gap-3 rounded-full px-5 text-sm font-bold text-white md:h-auto md:w-auto md:px-10 md:py-5 md:text-base"
                 >
                   Explore services
                 </MagneticButton>
@@ -333,25 +333,25 @@ export function CinematicFooter() {
                 <BookCallLiquidButton href="#book-call" />
               </div>
 
-              <div className="mt-2 flex w-full flex-wrap justify-center gap-3 md:gap-6">
+              <div className="mt-1 flex w-full flex-wrap justify-center gap-2 md:mt-2 md:gap-6">
                 <MagneticButton
                   as="a"
                   href="#hero"
-                  className="footer-glass-pill rounded-full px-6 py-3 text-xs font-medium text-white/70 hover:text-white md:text-sm"
+                  className="footer-glass-pill rounded-full px-4 py-2.5 text-xs font-medium text-white/70 hover:text-white md:px-6 md:py-3 md:text-sm"
                 >
                   Home
                 </MagneticButton>
                 <MagneticButton
                   as="a"
                   href="#features"
-                  className="footer-glass-pill rounded-full px-6 py-3 text-xs font-medium text-white/70 hover:text-white md:text-sm"
+                  className="footer-glass-pill rounded-full px-4 py-2.5 text-xs font-medium text-white/70 hover:text-white md:px-6 md:py-3 md:text-sm"
                 >
                   Features
                 </MagneticButton>
                 <MagneticButton
                   as="a"
                   href="#compliance"
-                  className="footer-glass-pill rounded-full px-6 py-3 text-xs font-medium text-white/70 hover:text-white md:text-sm"
+                  className="footer-glass-pill rounded-full px-4 py-2.5 text-xs font-medium text-white/70 hover:text-white md:px-6 md:py-3 md:text-sm"
                 >
                   Compliance
                 </MagneticButton>
@@ -359,8 +359,8 @@ export function CinematicFooter() {
             </div>
           </div>
 
-          <div className="relative z-20 flex w-full flex-col items-center justify-between gap-6 px-6 pb-8 md:flex-row md:px-12">
-            <div className="order-2 text-[10px] font-semibold uppercase tracking-widest text-white/50 md:order-1 md:text-xs">
+          <div className="relative z-20 flex w-full flex-col items-center justify-between gap-3 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] md:flex-row md:gap-6 md:px-12 md:pb-8">
+            <div className="order-2 text-center text-[9px] font-semibold uppercase tracking-widest text-white/50 md:order-1 md:text-left md:text-xs">
               © 2026 Jonas Alfonso. All rights reserved.
             </div>
 
@@ -370,7 +370,7 @@ export function CinematicFooter() {
                 href="https://www.linkedin.com/"
                 target="_blank"
                 rel="noreferrer"
-                className="footer-glass-pill flex h-12 w-12 items-center justify-center rounded-full text-white/80 hover:text-white"
+                className="footer-glass-pill flex h-11 w-11 items-center justify-center rounded-full text-white/80 hover:text-white md:h-12 md:w-12"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="size-5" />
@@ -380,7 +380,7 @@ export function CinematicFooter() {
                 href="https://wa.me/"
                 target="_blank"
                 rel="noreferrer"
-                className="footer-glass-pill flex h-12 w-12 items-center justify-center rounded-full text-white/80 hover:text-white"
+                className="footer-glass-pill flex h-11 w-11 items-center justify-center rounded-full text-white/80 hover:text-white md:h-12 md:w-12"
                 aria-label="WhatsApp"
               >
                 <MessageCircleMore className="size-5" />
@@ -390,7 +390,7 @@ export function CinematicFooter() {
             <MagneticButton
               as="button"
               onClick={scrollToTop}
-              className="footer-glass-pill group order-3 flex h-12 w-12 items-center justify-center rounded-full text-white/80 hover:text-white"
+              className="footer-glass-pill group absolute right-5 bottom-[max(1rem,env(safe-area-inset-bottom))] order-3 flex h-11 w-11 items-center justify-center rounded-full text-white/80 hover:text-white md:static md:h-12 md:w-12"
               aria-label="Back to top"
             >
               <svg

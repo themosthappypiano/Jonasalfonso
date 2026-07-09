@@ -119,8 +119,8 @@ const navItems = [
 
 const PrismaHero = () => {
   return (
-    <section className="h-[175vh] w-full">
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <section className="h-[100svh] min-h-[620px] w-full md:h-[175vh]">
+      <div className="relative h-[100svh] min-h-[620px] w-full overflow-hidden md:sticky md:top-0 md:h-screen md:min-h-0">
         {/* Background video */}
         <video
           autoPlay
@@ -162,18 +162,18 @@ const PrismaHero = () => {
         </nav>
 
         {/* Hero content */}
-        <div className="absolute right-0 bottom-0 left-0 px-4 pb-2 sm:px-6 md:px-10">
+        <div className="absolute right-0 bottom-0 left-0 px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:px-6 md:px-10 md:pb-2">
           <div className="grid grid-cols-12 items-end gap-4">
             <div className="col-span-12 lg:col-span-8">
               <h1
-                className="font-medium leading-[0.85] text-[24vw] sm:text-[22vw] md:text-[19vw] lg:text-[15vw] xl:text-[14vw] 2xl:text-[13vw]"
+                className="font-medium leading-[0.85] text-[25vw] sm:text-[22vw] md:text-[19vw] lg:text-[15vw] xl:text-[14vw] 2xl:text-[13vw]"
                 style={{ color: "#E1E0CC" }}
               >
                 <WordsPullUp text="Jonas" showAsterisk />
               </h1>
             </div>
 
-            <div className="col-span-12 flex flex-col gap-5 pb-6 lg:col-span-4 lg:pb-10">
+            <div className="col-span-12 flex flex-col gap-4 pb-1 sm:gap-5 sm:pb-6 lg:col-span-4 lg:pb-10">
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -182,7 +182,7 @@ const PrismaHero = () => {
                   delay: 0.5,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="max-w-md text-xs font-medium text-[#F4F0D8] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:text-sm md:text-base"
+                className="max-w-[34rem] text-sm font-medium text-[#F4F0D8] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:text-sm md:text-base"
                 style={{ lineHeight: 1.2 }}
               >
                 AI-powered systems that automate operations, capture leads, book

@@ -7,7 +7,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const cardVariants = cva(
-  "relative flex h-full min-h-[320px] w-full flex-col justify-between overflow-hidden rounded-2xl p-8 shadow-sm transition-shadow duration-300 hover:shadow-lg",
+  "relative flex h-full min-h-[280px] w-full flex-col justify-between overflow-hidden rounded-2xl p-6 shadow-sm transition-shadow duration-300 hover:shadow-lg sm:min-h-[320px] sm:p-8",
   {
     defaultVariants: {
       gradient: "gray",

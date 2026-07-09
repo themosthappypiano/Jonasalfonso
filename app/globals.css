@@ -203,6 +203,13 @@
 
 body {
   letter-spacing: var(--tracking-normal);
+  overflow-x: clip;
+}
+
+@media (min-width: 48rem) {
+  [style*="--desktop-transform"] {
+    transform: var(--desktop-transform);
+  }
 }
 
 @layer base {

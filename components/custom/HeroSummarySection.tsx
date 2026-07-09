@@ -30,7 +30,7 @@ export function HeroSummarySection() {
       className="relative -mt-px overflow-hidden bg-black text-white"
       ref={sectionRef}
     >
-      <div className="relative overflow-hidden px-6 py-28 md:py-40">
+      <div className="relative overflow-hidden px-5 py-20 sm:px-6 md:py-40">
         <AnimatedGradientBackground
           Breathing
           animationSpeed={0.018}
@@ -45,13 +45,13 @@ export function HeroSummarySection() {
         <div className="pointer-events-none absolute inset-0 bg-black/35" />
 
         <div className="relative mx-auto flex w-full max-w-6xl flex-col items-end">
-          <WavePath className="mb-12 text-white/25" />
+          <WavePath className="mb-8 text-white/25 md:mb-12" />
 
           <div className="flex w-full flex-col items-end gap-8 md:flex-row md:items-start md:justify-end">
             <p className="mt-2 text-sm font-medium uppercase tracking-wide text-white/70 md:w-1/4">
               AI automation agency
             </p>
-            <p className="max-w-3xl text-3xl font-medium leading-tight text-white md:text-5xl">
+            <p className="max-w-3xl text-[1.75rem] font-medium leading-[1.12] text-white sm:text-3xl md:text-5xl">
               I build AI systems that automate operations, capture leads, book
               appointments, and keep your business growing around the clock.
             </p>

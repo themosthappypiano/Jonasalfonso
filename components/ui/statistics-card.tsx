@@ -48,21 +48,21 @@ export function Stats() {
   return (
     <section className="h-full w-full">
       <style>{css}</style>
-      <div className="flex h-full w-full flex-col justify-center p-6">
+      <div className="flex h-full w-full flex-col justify-center p-4 sm:p-6">
         <div className="mx-auto max-w-xl text-center">
-          <div className="mx-auto mb-4 flex size-11 items-center justify-center rounded-full bg-black text-white">
+          <div className="mx-auto mb-3 flex size-10 items-center justify-center rounded-full bg-black text-white md:mb-4 md:size-11">
             <CirclePercent className="size-5 stroke-1.5" />
           </div>
-          <h3 className="text-3xl font-semibold tracking-tight text-black md:text-5xl">
+          <h3 className="text-2xl font-semibold leading-tight tracking-tight text-black sm:text-3xl md:text-5xl">
             Trained to turn conversations into calls
           </h3>
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-black/55 md:text-base">
+          <p className="mx-auto mt-3 max-w-lg text-xs leading-relaxed text-black/55 sm:text-sm md:mt-4 md:text-base">
             Built from your sales calls, CRM notes, scripts, FAQs, and objection
             data so the agent can qualify and convert like your best rep.
           </p>
         </div>
 
-        <div className="relative mx-auto mt-10 flex h-[360px] w-full max-w-4xl items-center justify-center gap-3 md:h-[420px]">
+        <div className="relative mx-auto mt-6 flex h-[220px] w-full max-w-4xl items-center justify-center gap-1.5 sm:h-[280px] sm:gap-3 md:mt-10 md:h-[420px]">
           {bars.map((props, index) => (
             <motion.div
               animate={{ opacity: 1, y: 0 }}
@@ -99,13 +99,13 @@ function BarChart({
         <motion.div
           animate={{ height: `${value}%`, opacity: 1, y: 0 }}
           className={cn(
-            "absolute bottom-0 mt-auto w-full rounded-[32px] bg-black/80 p-3 text-white",
+            "absolute bottom-0 mt-auto w-full rounded-2xl bg-black/80 p-1.5 text-white sm:rounded-[32px] sm:p-3",
             className,
           )}
           initial={{ height: 0, opacity: 0, y: 100 }}
           transition={{ damping: 20, delay, duration: 0.5, type: "spring" }}
         >
-          <div className="relative flex h-14 w-full items-center justify-center gap-2 rounded-full bg-white/20 text-lg font-semibold tracking-tighter">
+          <div className="relative flex h-9 w-full items-center justify-center gap-2 rounded-full bg-white/20 text-xs font-semibold tracking-tighter sm:h-14 sm:text-lg">
             <NumberFlow suffix="%" value={value} />
           </div>
         </motion.div>
@@ -123,7 +123,7 @@ function BarChart({
             y: showToolTip ? 0 : 100,
           }}
           className={cn(
-            "absolute -top-9 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-black px-2 py-1 text-sm text-white",
+            "absolute -top-7 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-black px-1.5 py-1 text-[10px] whitespace-nowrap text-white sm:-top-9 sm:rounded-xl sm:px-2 sm:text-sm",
             className,
           )}
           initial={{ opacity: 0, y: 100 }}
@@ -156,7 +156,7 @@ function BarChart({
         </motion.div>
       </motion.div>
 
-      <p className="mx-auto mt-3 w-fit text-center text-xs font-medium tracking-tight text-black/55 md:text-sm">
+      <p className="mx-auto mt-2 w-fit text-center text-[9px] font-medium leading-tight tracking-tight text-black/55 sm:mt-3 sm:text-xs md:text-sm">
         {label}
       </p>
     </div>

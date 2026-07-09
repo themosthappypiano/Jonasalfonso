@@ -23,17 +23,17 @@ function PageCopy({
   title: string;
 }) {
   return (
-    <div className="flex h-full flex-col justify-center p-8 text-white md:p-12">
-      <div className="mb-6 flex size-12 items-center justify-center rounded-full bg-white text-black">
+    <div className="flex h-full flex-col justify-center p-6 text-white sm:p-8 md:p-12">
+      <div className="mb-5 flex size-11 items-center justify-center rounded-full bg-white text-black md:mb-6 md:size-12">
         <Icon className="size-6 stroke-1.5" />
       </div>
       <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
         {eyebrow}
       </p>
-      <h3 className="max-w-xl text-4xl font-semibold leading-none tracking-tight md:text-6xl">
+      <h3 className="max-w-xl text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl md:text-6xl">
         {title}
       </h3>
-      <p className="mt-6 max-w-lg text-base leading-relaxed text-white/65 md:text-lg">
+      <p className="mt-5 max-w-lg text-sm leading-relaxed text-white/65 sm:text-base md:mt-6 md:text-lg">
         {description}
       </p>
     </div>
@@ -50,7 +50,7 @@ function VisualShell({
   return (
     <div
       className={cn(
-        "flex h-full items-center justify-center bg-white p-5 text-black md:p-8",
+        "flex h-full min-h-[430px] items-center justify-center bg-white p-4 text-black md:min-h-0 md:p-8",
         className,
       )}
     >
@@ -88,7 +88,7 @@ const pages = [
     ),
     rightContent: (
       <VisualShell className="p-2 md:p-3">
-        <div className="w-full scale-125">
+        <div className="w-full scale-100 sm:scale-110 md:scale-125">
           <OrbitingCirclesDemo />
         </div>
       </VisualShell>
@@ -97,9 +97,9 @@ const pages = [
   {
     leftContent: (
       <VisualShell className="p-2 md:p-3">
-        <div className="flex h-full w-full translate-y-10 items-center justify-center scale-115">
+        <div className="flex h-full w-full translate-y-4 items-center justify-center md:translate-y-10 md:scale-115">
           <AnimatedListSection
-            className="h-[520px] max-w-xl"
+            className="h-[400px] max-w-xl md:h-[520px]"
             showFade={false}
           />
         </div>

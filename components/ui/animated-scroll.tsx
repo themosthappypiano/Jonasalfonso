@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -178,7 +178,7 @@ export default function ScrollAdventure({
   return (
     <div
       className={cn(
-        "relative h-screen overflow-hidden rounded-xl bg-black text-white shadow-[0_24px_80px_rgba(0,0,0,0.28)] outline-none",
+        "relative overflow-hidden rounded-xl bg-black text-white shadow-[0_24px_80px_rgba(0,0,0,0.28)] outline-none md:h-screen",
         className,
       )}
       ref={containerRef}
@@ -190,17 +190,20 @@ export default function ScrollAdventure({
         const rightTransform = isActive ? "translateY(0)" : "translateY(-100%)";
 
         return (
-          <div className="absolute inset-0" key={pageNumber}>
+          <div
+            className="relative border-b border-white/10 last:border-b-0 md:absolute md:inset-0 md:border-0"
+            key={pageNumber}
+          >
             <div
-              className="absolute top-0 left-0 h-full w-full transition-transform duration-1000 md:w-1/2"
-              style={{ transform: leftTransform }}
+              className="relative h-auto min-h-[360px] w-full md:absolute md:top-0 md:left-0 md:h-full md:min-h-0 md:w-1/2 md:transition-transform md:duration-1000"
+              style={{ "--desktop-transform": leftTransform } as CSSProperties}
             >
               <div className="h-full w-full">{page.leftContent}</div>
             </div>
 
             <div
-              className="absolute top-0 left-0 h-full w-full transition-transform duration-1000 md:left-1/2 md:w-1/2"
-              style={{ transform: rightTransform }}
+              className="relative h-auto min-h-[360px] w-full md:absolute md:top-0 md:left-1/2 md:h-full md:min-h-0 md:w-1/2 md:transition-transform md:duration-1000"
+              style={{ "--desktop-transform": rightTransform } as CSSProperties}
             >
               <div className="h-full w-full">{page.rightContent}</div>
             </div>
@@ -208,7 +211,7 @@ export default function ScrollAdventure({
         );
       })}
 
-      <div className="absolute right-4 bottom-4 z-30 flex gap-2">
+      <div className="absolute right-4 bottom-4 z-30 hidden gap-2 md:flex">
         {Array.from({ length: pageCount }, (_, index) => {
           const pageNumber = index + 1;
 

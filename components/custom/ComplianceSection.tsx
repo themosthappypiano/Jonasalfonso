@@ -59,7 +59,7 @@ const ComplianceSection = () => {
         topOffset={18}
       />
       <div className="pointer-events-none absolute inset-0 bg-black/62" />
-      <div className="relative z-10 mx-auto flex max-w-container flex-col items-center gap-6 px-8 py-12 md:py-20 lg:py-32">
+      <div className="relative z-10 mx-auto flex max-w-container flex-col items-center gap-6 px-5 py-16 sm:px-8 md:py-20 lg:py-32">
         <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(460px,1.1fr)] lg:items-center">
           <div className="flex flex-col gap-5">
             <motion.div
@@ -104,7 +104,7 @@ const ComplianceSection = () => {
             </motion.p>
 
             <motion.div
-              className="grid max-w-md grid-cols-2 gap-3 pt-2 text-xs font-semibold uppercase text-white/70"
+              className="grid max-w-md grid-cols-1 gap-3 pt-2 text-xs font-semibold uppercase text-white/70 min-[380px]:grid-cols-2"
               variants={bentoDescription}
               initial="hidden"
               whileInView="visible"
@@ -137,10 +137,10 @@ const ComplianceSection = () => {
             {complianceItems.map((item, index) => (
               <div
                 key={item.title}
-                className="relative flex min-h-36 items-center gap-5 border-white/10 border-b p-6 last:border-b-0 sm:p-8"
+                className="relative flex min-h-0 items-center gap-5 border-white/10 border-b p-5 last:border-b-0 sm:min-h-36 sm:p-8"
               >
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white sm:text-2xl">
+                  <h3 className="pr-8 text-lg font-bold text-white sm:text-2xl">
                     {item.title}
                   </h3>
                   <p className="mt-3 max-w-xl text-sm leading-6 text-white/60 sm:text-base">
