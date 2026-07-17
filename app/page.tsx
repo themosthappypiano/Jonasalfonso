@@ -1,12 +1,60 @@
-"use client";
-
-import { BentoSection } from "@/components/bentoSection/BentoSection";
-import { AgencySystemsSection } from "@/components/custom/AgencySystemsSection";
-import { BookCallSection } from "@/components/custom/BookCallSection";
-import ComplianceSection from "@/components/custom/ComplianceSection";
-import { FooterSection } from "@/components/custom/FooterSection";
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/custom/HeroSection";
-import { HeroSummarySection } from "@/components/custom/HeroSummarySection";
+
+const HeroSummarySection = dynamic(
+  () =>
+    import("@/components/custom/HeroSummarySection").then(
+      (mod) => mod.HeroSummarySection,
+    ),
+  { loading: () => <SectionPlaceholder /> },
+);
+
+const BentoSection = dynamic(
+  () =>
+    import("@/components/bentoSection/BentoSection").then(
+      (mod) => mod.BentoSection,
+    ),
+  { loading: () => <SectionPlaceholder /> },
+);
+
+const ComplianceSection = dynamic(
+  () => import("@/components/custom/ComplianceSection"),
+  { loading: () => <SectionPlaceholder /> },
+);
+
+const AgencySystemsSection = dynamic(
+  () =>
+    import("@/components/custom/AgencySystemsSection").then(
+      (mod) => mod.AgencySystemsSection,
+    ),
+  { loading: () => <SectionPlaceholder /> },
+);
+
+const SelectedWorkSection = dynamic(
+  () =>
+    import("@/components/custom/SelectedWorkSection").then(
+      (mod) => mod.SelectedWorkSection,
+    ),
+  { loading: () => <SectionPlaceholder /> },
+);
+
+const BookCallSection = dynamic(() =>
+  import("@/components/custom/BookCallSection").then(
+    (mod) => mod.BookCallSection,
+  ),
+);
+
+const FooterSection = dynamic(
+  () =>
+    import("@/components/custom/FooterSection").then(
+      (mod) => mod.FooterSection,
+    ),
+  { loading: () => <SectionPlaceholder /> },
+);
+
+function SectionPlaceholder() {
+  return <div aria-hidden="true" className="min-h-[40vh]" />;
+}
 
 export default function Home() {
   return (
@@ -16,6 +64,8 @@ export default function Home() {
       </section>
 
       <HeroSummarySection />
+
+      <SelectedWorkSection />
 
       <BentoSection />
 

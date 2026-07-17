@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Keep production builds from overwriting chunks used by `next dev`.
+  distDir: process.env.NEXT_DIST_DIR ?? ".next",
   output: "export",
   poweredByHeader: false,
   reactStrictMode: true,

@@ -5,8 +5,8 @@ import { Bot } from "lucide-react";
 import { BookCallLiquidButton } from "@/components/ui/button-1";
 import { GradientCard } from "@/components/ui/gradient-card";
 import { bentoDescription, bentoHeader } from "@/lib/animations";
-import WorkflowAnimation from "../workflow-animation";
 import CustomSeperator from "./Seperator";
+import { ServicesBeam } from "./ServicesBeam";
 
 const services = [
   {
@@ -100,7 +100,7 @@ export function AgencySystemsSection() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <WorkflowAnimation />
+            <ServicesBeam />
           </motion.div>
         </div>
 

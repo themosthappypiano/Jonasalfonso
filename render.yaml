@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: jonas-alfonso
+    runtime: static
+    plan: free
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./out
+    envVars:
+      - key: HUSKY
+        value: "0"
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
