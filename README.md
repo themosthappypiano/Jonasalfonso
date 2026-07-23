@@ -1,75 +1,56 @@
-# Agent Kit Site
+# Oleo Agency Portfolio
 
-A modern, production-ready Next.js landing page template designed specifically for AI automation platforms and agent-based services. Built with performance and user experience in mind.
+The source code for [jonasalfonso.com](https://jonasalfonso.com), the portfolio and service website for Jonas Alfonso and Oleo Agency.
 
-## ✨ Features
+The site presents practical AI automation systems for service businesses, including AI receptionists, voice agents, booking workflows, lead reactivation, and custom integrations.
 
-- **Modern Design**: Clean, professional layout with smooth animations
-- **AI-Focused**: Tailored for automation platforms and agent services
-- **Responsive**: Mobile-first design that works on all devices
-- **Performance**: Optimized with Next.js 15, Turbopack, and modern React
-- **Accessible**: Built with accessibility best practices
-- **Enterprise Ready**: Includes company logos, testimonials, and CTA sections
+## Featured work
 
-## 🛠 Tech Stack
+- **WoofGlam booking agent:** WhatsApp and voice intake, availability checks, customer details, calendar integration, and Stripe deposits.
+- **Bridge 48 lead reactivation:** Personalized WhatsApp conversations that return dormant CRM leads to the sales pipeline.
+- **CV intake and job dashboard:** Guided information collection and an AI-assisted workflow for job seekers.
+- **Instagram DM agent:** Conversation design and system-prompt development for automated direct messages.
 
-- **Framework**: Next.js 15 with App Router
-- **Styling**: Tailwind CSS 4
-- **Animations**: Framer Motion
-- **UI Components**: Radix UI primitives
-- **Icons**: Lucide React
-- **Linting**: Biome
-- **TypeScript**: Full type safety
+## Services represented
 
-## 🚀 Quick Start
+- AI chatbots and lead qualification
+- AI voice agents
+- AI receptionists
+- Appointment and booking systems
+- Custom CRM, inbox, calendar, and form integrations
+
+## Technology
+
+- Next.js 15 and React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion and GSAP
+- Radix UI
+- Biome for linting and formatting
+- Render for deployment
+
+## Local development
+
+Requirements: Node.js 20 or newer.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-## 📦 What's Included
+## Production checks
 
-- Responsive navigation bar
-- Hero section with animated background
-- Company logos showcase
-- Email signup form
-- Smooth page transitions
-- Modern UI components
-- Production-ready configuration
+```bash
+npm run lint
+npm run build
+```
 
-## 🎯 Perfect For
+## Live website
 
-- AI startups and automation platforms
-- Agent-based service providers
-- SaaS companies in the AI space
-- Developers looking for a modern landing page template
+[jonasalfonso.com](https://jonasalfonso.com)
 
-## 📝 Available Scripts
+## Contact
 
-- `npm run dev` - Start development server with Turbopack
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run Biome linter
-- `npm run lint:fix` - Fix linting issues
-- `npm run format` - Format code
-- `npm run format:check` - Check code formatting
-
-## 🎨 Customization
-
-The template is designed to be easily customizable:
-
-1. **Colors**: Update the color scheme in `app/globals.css`
-2. **Content**: Modify the hero text and company logos in `app/page.tsx`
-3. **Animations**: Adjust animation variants in `lib/animations.ts`
-4. **Components**: Customize UI components in the `components/` directory
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-Built with ❤️ for the AI automation community
+For AI automation projects, visit [jonasalfonso.com](https://jonasalfonso.com).
