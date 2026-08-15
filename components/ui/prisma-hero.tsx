@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { DynamicButton } from "@/components/custom/DynamicButton";
 import { BookCallLiquidButton } from "@/components/ui/button-1";
 import { ScrollingAnimation } from "@/components/ui/scrolling-animation";
 
@@ -198,9 +199,12 @@ const PrismaHero = () => {
                   delay: 0.7,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="self-start"
+                className="self-start flex flex-wrap gap-4 items-center mt-2"
               >
                 <BookCallLiquidButton href="#book-call" />
+                <div className="scale-90 origin-left">
+                  <DynamicButton href="/portfolio">View the work</DynamicButton>
+                </div>
               </motion.div>
             </div>
           </div>
