@@ -1,6 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { Leaf, Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useState } from "react";
 import { fadeIn } from "@/lib/animations";
 import { cn } from "@/lib/utils";
@@ -57,13 +58,15 @@ function Navbar({ className }: NavbarProps) {
         <div className="absolute inset-0  bg-gradient-to-b from-white/10 to-transparent backdrop-blur-2xl pointer-events-none !rounded-2xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
-                <Leaf className="w-5 h-5 text-secondary-foreground" />
-              </div>
-              <span className="text-xl font-semibold text-primary-foreground">
-                Jonas Alfonso
-              </span>
+            <div className="flex items-center space-x-2 cursor-pointer">
+              <Link href="/" className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
+                  <Leaf className="w-5 h-5 text-secondary-foreground" />
+                </div>
+                <span className="text-xl font-semibold text-primary-foreground">
+                  Jonas Alfonso
+                </span>
+              </Link>
             </div>
 
             {/* Desktop Navigation Links */}

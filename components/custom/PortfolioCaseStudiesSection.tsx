@@ -158,6 +158,41 @@ export function PortfolioCaseStudiesSection() {
             </div>
           </div>
 
+          <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div className="relative aspect-square overflow-hidden rounded-2xl bg-white/50 border border-black/5">
+              <Image
+                src="/portfolio/founderos.svg"
+                alt="FounderOS"
+                fill
+                className="object-contain p-8 opacity-80 mix-blend-multiply"
+              />
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-2xl bg-white/50 border border-black/5">
+              <Image
+                src="/portfolio/network-os.svg"
+                alt="Network OS"
+                fill
+                className="object-contain p-8 opacity-80 mix-blend-multiply"
+              />
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-2xl bg-white/50 border border-black/5">
+              <Image
+                src="/portfolio/testmyagent.png"
+                alt="TestMyAgent"
+                fill
+                className="object-contain p-6"
+              />
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-2xl bg-white/50 border border-black/5">
+              <Image
+                src="/portfolio/vest-self.png"
+                alt="Vest Self"
+                fill
+                className="object-contain p-6"
+              />
+            </div>
+          </div>
+
           <div
             id="services"
             className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-[#0b1d10]/15 bg-[#0b1d10]/15 md:grid-cols-2 lg:grid-cols-4"

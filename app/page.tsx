@@ -38,6 +38,8 @@ const SelectedWorkSection = dynamic(
   { loading: () => <SectionPlaceholder /> },
 );
 
+import { DynamicButton } from "@/components/custom/DynamicButton";
+
 const BookCallSection = dynamic(() =>
   import("@/components/custom/BookCallSection").then(
     (mod) => mod.BookCallSection,
@@ -65,7 +67,9 @@ export default function Home() {
 
       <HeroSummarySection />
 
-      <SelectedWorkSection />
+      <section className="flex justify-center py-12">
+        <DynamicButton href="/portfolio">View the work</DynamicButton>
+      </section>
 
       <BentoSection />
 

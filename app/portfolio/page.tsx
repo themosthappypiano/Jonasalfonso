@@ -10,7 +10,7 @@ export default function HomePage() {
       <CinematicPortfolioHero />
       <ProjectShowcaseSection />
       <PortfolioCaseStudiesSection />
-      <TestimonialMarqueeSection />
+      {/* <TestimonialMarqueeSection /> */}
       <GalleryCTASection />
       <footer className="border-t border-white/10 bg-[#070907] px-5 py-8 text-white sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">

@@ -16,7 +16,7 @@ export const portfolioProjects: PortfolioProject[] = [
     status: "AI services client · Live operations",
     year: "2026",
     href: "#case-bdn",
-    image: "/portfolio/jonas-speaking.jpg",
+    image: "/portfolio/bcn-digital-nomads.png",
   },
   {
     title: "Bridge 48",
@@ -34,7 +34,7 @@ export const portfolioProjects: PortfolioProject[] = [
     status: "Client system · AI intake and CRM",
     year: "2026",
     href: "#case-shaping",
-    image: "/portfolio/shaping-success.svg",
+    image: "/portfolio/shaping-success-logo.png",
   },
   {
     title: "TestMyAgent.pro",
@@ -100,7 +100,7 @@ export const caseStudies = [
       "Records allowed, flagged, deleted, and removed-member outcomes for operators.",
     ],
     stack: ["n8n", "WAHA", "OpenAI", "Airtable", "Gmail"],
-    image: "/portfolio/jonas-speaking.jpg",
+    image: "/portfolio/bcn-digital-nomads.png",
   },
   {
     id: "case-bridge",
@@ -136,7 +136,7 @@ export const caseStudies = [
       "Routes files, records, and notifications through distinct operational outcomes.",
     ],
     stack: ["n8n", "OpenAI", "Supabase", "Outlook", "JavaScript"],
-    image: "/portfolio/shaping-success.svg",
+    image: "/portfolio/shaping-success-logo.png",
   },
 ] as const;
 
