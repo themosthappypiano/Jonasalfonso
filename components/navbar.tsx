@@ -70,21 +70,30 @@ function Navbar({ className }: NavbarProps) {
             <div className="hidden md:flex items-center space-x-8">
               <Button
                 variant="ghost"
+                onClick={() => scrollToSection("work")}
+                onKeyDown={(e) => handleKeyDown(e, "work")}
+                className="text-sm text-primary-foreground hover:text-primary transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm px-2 py-1"
+                aria-label="Navigate to Selected Work section"
+              >
+                Work
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => scrollToSection("community")}
+                onKeyDown={(e) => handleKeyDown(e, "community")}
+                className="text-sm text-primary-foreground hover:text-primary transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm px-2 py-1"
+                aria-label="Navigate to Community section"
+              >
+                Community
+              </Button>
+              <Button
+                variant="ghost"
                 onClick={() => scrollToSection("services")}
                 onKeyDown={(e) => handleKeyDown(e, "services")}
                 className="text-sm text-primary-foreground hover:text-primary transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm px-2 py-1"
                 aria-label="Navigate to Services section"
               >
                 Services
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("features")}
-                onKeyDown={(e) => handleKeyDown(e, "features")}
-                className="text-sm text-primary-foreground hover:text-primary transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm px-2 py-1"
-                aria-label="Navigate to Features section"
-              >
-                Features
               </Button>
             </div>
 
@@ -130,20 +139,28 @@ function Navbar({ className }: NavbarProps) {
                 <div className="absolute inset-0 bg-primary rounded-b-2xl"></div>
                 <div className="relative z-10">
                   <Button
+                    onClick={() => scrollToSection("work")}
+                    onKeyDown={(e) => handleKeyDown(e, "work")}
+                    className="block w-full text-left px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
+                    aria-label="Navigate to Selected Work section"
+                  >
+                    Work
+                  </Button>
+                  <Button
+                    onClick={() => scrollToSection("community")}
+                    onKeyDown={(e) => handleKeyDown(e, "community")}
+                    className="block w-full text-left px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
+                    aria-label="Navigate to Community section"
+                  >
+                    Community
+                  </Button>
+                  <Button
                     onClick={() => scrollToSection("services")}
                     onKeyDown={(e) => handleKeyDown(e, "services")}
                     className="block w-full text-left px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
                     aria-label="Navigate to Services section"
                   >
                     Services
-                  </Button>
-                  <Button
-                    onClick={() => scrollToSection("features")}
-                    onKeyDown={(e) => handleKeyDown(e, "features")}
-                    className="block w-full text-left px-3 py-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium focus:outline-none focus:ring-2 focus:ring-primary-foreground/20 focus:ring-offset-2 focus:ring-offset-primary rounded-sm"
-                    aria-label="Navigate to Features section"
-                  >
-                    Features
                   </Button>
                   <div className="pt-4 pb-3 border-t border-border">
                     <div className="flex flex-col space-y-2 px-3">

@@ -112,9 +112,10 @@ export const WordsPullUpMultiStyle = ({
 
 /* ---------------- Hero ---------------- */
 const navItems = [
+  { label: "Work", href: "#work" },
+  { label: "Community", href: "#community" },
   { label: "Services", href: "#services" },
-  { label: "Features", href: "#features" },
-  { label: "Inquiries", href: "#services" },
+  { label: "Portfolio", href: "/portfolio" },
 ];
 
 const PrismaHero = () => {
