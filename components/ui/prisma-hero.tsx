@@ -55,23 +55,25 @@ export const WordsPullUp = ({
 
 /* ---------------- Hero ---------------- */
 const navItems = [
-  { label: "Work", href: "#work" },
-  { label: "Community", href: "#community" },
+  { label: "Work", href: "/portfolio#work" },
+  { label: "Community", href: "/portfolio#community" },
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "/portfolio" },
 ];
 
 const PrismaHero = () => {
   return (
-    <section className="relative min-h-[100dvh] w-full md:h-[175vh] bg-black">
-      <div className="relative min-h-[100dvh] w-full overflow-hidden md:sticky md:top-0 md:h-screen md:min-h-0 flex flex-col justify-between">
+    <section className="relative h-[100svh] w-full bg-black md:h-[175vh]">
+      <div className="relative flex h-[100svh] w-full flex-col justify-between overflow-hidden md:sticky md:top-0 md:h-screen">
+        <div className="absolute inset-0 bg-[url('/hero-mobile-poster.jpg')] bg-cover bg-center md:hidden" />
         {/* Background video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+          className="pointer-events-none absolute inset-0 hidden h-full w-full object-cover md:block"
+          poster="/hero-mobile-poster.jpg"
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
         />
 
@@ -87,12 +89,12 @@ const PrismaHero = () => {
 
         {/* Top Navbar */}
         <nav className="relative z-30 pt-3 px-4 flex justify-center w-full">
-          <div className="flex items-center gap-3 sm:gap-6 md:gap-12 rounded-full bg-black/80 backdrop-blur-md border border-white/10 px-5 py-2.5 max-w-[95vw] overflow-x-auto no-scrollbar shadow-lg">
+          <div className="no-scrollbar flex max-w-[calc(100vw-1.5rem)] items-center gap-1 overflow-x-auto rounded-full border border-white/10 bg-black/80 px-2 py-2.5 shadow-lg backdrop-blur-md min-[360px]:gap-3 sm:gap-6 sm:px-5 md:gap-12">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="whitespace-nowrap text-xs sm:text-sm font-medium transition-colors text-white/80 hover:text-white px-2 py-1"
+                className="whitespace-nowrap px-1.5 py-1 text-[11px] font-medium text-white/80 transition-colors hover:text-white sm:px-2 sm:text-sm"
               >
                 {item.label}
               </a>
@@ -101,7 +103,7 @@ const PrismaHero = () => {
         </nav>
 
         {/* Hero content */}
-        <div className="relative z-30 px-5 pb-8 pt-20 sm:px-8 md:px-10 md:pb-6 mt-auto">
+        <div className="relative z-30 mt-auto px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-12 sm:px-8 md:px-10 md:pb-6">
           <div className="grid grid-cols-12 items-end gap-4">
             <div className="col-span-12 lg:col-span-8">
               <h1
@@ -141,9 +143,12 @@ const PrismaHero = () => {
                   href="#book-call"
                   className="w-full min-[420px]:w-auto justify-center min-h-[48px]"
                 />
-                <div className="scale-95 origin-left self-start min-[420px]:self-auto">
-                  <DynamicButton href="/portfolio">View the work</DynamicButton>
-                </div>
+                <DynamicButton
+                  className="w-full min-[420px]:w-auto"
+                  href="/portfolio"
+                >
+                  View the work
+                </DynamicButton>
               </motion.div>
             </div>
           </div>

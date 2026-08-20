@@ -2,7 +2,6 @@ import { CinematicPortfolioHero } from "@/components/custom/CinematicPortfolioHe
 import { GalleryCTASection } from "@/components/custom/GalleryCTASection";
 import { PortfolioCaseStudiesSection } from "@/components/custom/PortfolioCaseStudiesSection";
 import { ProjectShowcaseSection } from "@/components/custom/ProjectShowcaseSection";
-import { TestimonialMarqueeSection } from "@/components/custom/TestimonialMarqueeSection";
 
 export default function HomePage() {
   return (

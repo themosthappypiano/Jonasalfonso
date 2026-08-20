@@ -30,14 +30,6 @@ const AgencySystemsSection = dynamic(
   { loading: () => <SectionPlaceholder /> },
 );
 
-const SelectedWorkSection = dynamic(
-  () =>
-    import("@/components/custom/SelectedWorkSection").then(
-      (mod) => mod.SelectedWorkSection,
-    ),
-  { loading: () => <SectionPlaceholder /> },
-);
-
 import { DynamicButton } from "@/components/custom/DynamicButton";
 
 const BookCallSection = dynamic(() =>

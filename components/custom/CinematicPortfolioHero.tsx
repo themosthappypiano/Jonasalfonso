@@ -41,6 +41,16 @@ export function CinematicPortfolioHero() {
       const prefersReducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+      if (isMobile) {
+        gsap.set(introRef.current, {
+          autoAlpha: 1,
+          clearProps: "transform,filter",
+        });
+        gsap.set(cardRef.current, { autoAlpha: 0 });
+        return;
+      }
 
       if (prefersReducedMotion) {
         gsap.set(
@@ -177,7 +187,7 @@ export function CinematicPortfolioHero() {
     <section
       id="top"
       ref={rootRef}
-      className="relative flex h-screen min-h-[680px] w-full items-center justify-center overflow-hidden bg-[#050806] text-white"
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-[#050806] py-24 text-white md:h-screen md:min-h-[680px] md:py-0"
       aria-labelledby="portfolio-hero-title"
     >
       <Image
@@ -256,7 +266,7 @@ export function CinematicPortfolioHero() {
       <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
         <div
           ref={cardRef}
-          className="portfolio-depth-card pointer-events-auto relative flex h-[88vh] w-[92vw] max-w-[1500px] overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#09150e] shadow-[0_60px_160px_rgba(0,0,0,.8)]"
+          className="portfolio-depth-card pointer-events-auto relative hidden h-[88vh] w-[92vw] max-w-[1500px] overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#09150e] shadow-[0_60px_160px_rgba(0,0,0,.8)] md:flex"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_35%,rgba(70,255,143,.16),transparent_35%),linear-gradient(135deg,#0d2015,#061009_70%)]" />
           <div

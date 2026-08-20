@@ -304,13 +304,6 @@ export function BookCallLiquidButton({
 }: BookCallLiquidButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (href?.startsWith("#")) {
-      e.preventDefault();
-      window.location.hash = href;
-    }
-  };
-
   return (
     <a
       className={cn(
@@ -318,7 +311,6 @@ export function BookCallLiquidButton({
         className,
       )}
       href={href}
-      onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
