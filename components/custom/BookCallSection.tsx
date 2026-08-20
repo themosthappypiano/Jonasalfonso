@@ -66,25 +66,25 @@ export function BookCallSection() {
         <X className="size-5" />
       </button>
 
-      <div className="mx-auto grid min-h-[calc(100svh-1rem)] max-w-7xl gap-6 rounded-2xl border border-white/10 bg-black px-4 py-16 shadow-2xl shadow-black/60 sm:min-h-[calc(100vh-3rem)] sm:gap-8 sm:rounded-3xl sm:px-5 sm:py-10 md:px-8 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:items-center">
+      <div className="mx-auto grid min-h-[calc(100svh-1rem)] max-w-7xl gap-4 rounded-2xl border border-white/10 bg-black px-3 py-6 shadow-2xl shadow-black/60 sm:min-h-[calc(100vh-3rem)] sm:gap-8 sm:rounded-3xl sm:px-5 sm:py-10 md:px-8 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:items-center">
         <div>
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
+          <p className="mb-2 sm:mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
             Ready to book a call
           </p>
           <h2
-            className="max-w-xl text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl"
+            className="max-w-xl text-2xl font-semibold leading-tight sm:text-4xl md:text-5xl"
             id="book-call-title"
           >
             Pick a time that works.
           </h2>
-          <p className="mt-5 max-w-lg text-base leading-7 text-white/60">
+          <p className="mt-3 sm:mt-5 max-w-lg text-sm sm:text-base leading-6 sm:leading-7 text-white/60">
             Choose a 15-minute slot and I’ll walk through what you want to
             automate, where the bottlenecks are, and what kind of AI system
             makes sense.
           </p>
         </div>
 
-        <div className="h-[620px] overflow-hidden rounded-xl border border-white/10 bg-white shadow-2xl shadow-black/40 sm:h-[720px] sm:rounded-2xl">
+        <div className="h-[520px] sm:h-[620px] md:h-[720px] overflow-hidden rounded-xl border border-white/10 bg-white shadow-2xl shadow-black/40">
           <CalInlineEmbed
             calLink="jonas-alfonso-ohn6ow/15min"
             className="h-full w-full"

@@ -142,13 +142,13 @@ const PrismaHero = () => {
         <ScrollingAnimation />
 
         {/* Navbar */}
-        <nav className="absolute left-1/2 top-0 z-20 -translate-x-1/2">
-          <div className="flex items-center gap-3 rounded-b-2xl bg-black px-4 py-2 sm:gap-6 md:gap-12 md:rounded-b-3xl md:px-8 lg:gap-14">
+        <nav className="absolute left-1/2 top-0 z-20 -translate-x-1/2 max-w-[92vw]">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar rounded-b-2xl bg-black px-3 py-2 sm:gap-6 md:gap-12 md:rounded-b-3xl md:px-8 lg:gap-14">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-[10px] transition-colors sm:text-xs md:text-sm"
+                className="whitespace-nowrap text-[11px] font-medium transition-colors sm:text-xs md:text-sm px-1 py-1"
                 style={{ color: "rgba(225, 224, 204, 0.8)" }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "#E1E0CC";
@@ -164,18 +164,18 @@ const PrismaHero = () => {
         </nav>
 
         {/* Hero content */}
-        <div className="absolute right-0 bottom-0 left-0 px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:px-6 md:px-10 md:pb-2">
-          <div className="grid grid-cols-12 items-end gap-4">
+        <div className="absolute right-0 bottom-0 left-0 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 md:px-10 md:pb-2">
+          <div className="grid grid-cols-12 items-end gap-3 sm:gap-4">
             <div className="col-span-12 lg:col-span-8">
               <h1
-                className="font-medium leading-[0.85] text-[25vw] sm:text-[22vw] md:text-[19vw] lg:text-[15vw] xl:text-[14vw] 2xl:text-[13vw]"
+                className="font-medium leading-[0.85] text-[20vw] min-[380px]:text-[22vw] sm:text-[22vw] md:text-[19vw] lg:text-[15vw] xl:text-[14vw] 2xl:text-[13vw]"
                 style={{ color: "#E1E0CC" }}
               >
                 <WordsPullUp text="Jonas" showAsterisk />
               </h1>
             </div>
 
-            <div className="col-span-12 flex flex-col gap-4 pb-1 sm:gap-5 sm:pb-6 lg:col-span-4 lg:pb-10">
+            <div className="col-span-12 flex flex-col gap-3 pb-1 sm:gap-5 sm:pb-6 lg:col-span-4 lg:pb-10">
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -184,8 +184,8 @@ const PrismaHero = () => {
                   delay: 0.5,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="max-w-[34rem] text-sm font-medium text-[#F4F0D8] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:text-sm md:text-base"
-                style={{ lineHeight: 1.2 }}
+                className="max-w-[34rem] text-xs font-medium text-[#F4F0D8] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] min-[380px]:text-sm sm:text-sm md:text-base"
+                style={{ lineHeight: 1.25 }}
               >
                 AI-powered systems that automate operations, capture leads, book
                 appointments, and help businesses grow around the clock.
@@ -199,10 +199,13 @@ const PrismaHero = () => {
                   delay: 0.7,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="self-start flex flex-wrap gap-4 items-center mt-2"
+                className="flex flex-col min-[420px]:flex-row gap-3 items-stretch min-[420px]:items-center mt-1 sm:mt-2 w-full min-[420px]:w-auto"
               >
-                <BookCallLiquidButton href="#book-call" />
-                <div className="scale-90 origin-left">
+                <BookCallLiquidButton
+                  href="#book-call"
+                  className="w-full min-[420px]:w-auto justify-center"
+                />
+                <div className="scale-90 origin-left self-start min-[420px]:self-auto">
                   <DynamicButton href="/portfolio">View the work</DynamicButton>
                 </div>
               </motion.div>

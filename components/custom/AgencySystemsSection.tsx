@@ -66,7 +66,7 @@ export function AgencySystemsSection() {
       <CustomSeperator />
 
       <div className="max-w-7xl mx-auto px-2 md:px-6 py-10 md:py-20">
-        <div className="mb-12 grid items-center gap-8 sm:gap-10 md:mb-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,1.1fr)] lg:gap-14">
+        <div className="mb-12 grid items-center gap-8 sm:gap-10 md:mb-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
           <motion.div
             className="space-y-5"
             variants={bentoHeader}

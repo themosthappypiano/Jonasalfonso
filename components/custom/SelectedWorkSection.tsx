@@ -162,7 +162,7 @@ function WoofGlamVisual() {
       className="relative flex h-[19rem] items-center overflow-hidden rounded-xl border border-cyan-200/80 bg-gradient-to-br from-white/90 via-cyan-50 to-blue-100 px-4 shadow-[0_24px_70px_rgba(14,116,144,0.16)] sm:px-8"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.12),transparent_58%)]" />
-      <div className="relative z-10 grid w-full grid-cols-[1fr_1fr] items-center gap-5 sm:grid-cols-[1fr_1.2fr_1fr]">
+      <div className="relative z-10 grid w-full grid-cols-1 sm:grid-cols-[1fr_1.2fr_1fr] items-center gap-3 sm:gap-5">
         <FlowNode
           ref={inboundRef}
           icon={MessageCircle}
