@@ -304,22 +304,30 @@ export function BookCallLiquidButton({
 }: BookCallLiquidButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (href?.startsWith("#")) {
+      e.preventDefault();
+      window.location.hash = href;
+    }
+  };
+
   return (
     <a
       className={cn(
-        "group relative inline-flex h-12 w-[168px] items-center justify-center rounded-full border border-[#E1E0CC]/80 bg-black text-sm font-semibold text-white shadow-[0_12px_36px_rgba(0,0,0,0.38)] outline-none transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-[#E1E0CC]",
+        "group relative inline-flex h-12 w-[168px] items-center justify-center rounded-full border border-[#E1E0CC]/80 bg-black text-sm font-semibold text-white shadow-[0_12px_36px_rgba(0,0,0,0.38)] outline-none transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-[#E1E0CC] cursor-pointer z-20",
         className,
       )}
       href={href}
+      onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="absolute inset-[-7px] rounded-full opacity-75 blur-[16px]">
+      <div className="pointer-events-none absolute inset-[-7px] rounded-full opacity-75 blur-[16px]">
         <div className="relative h-full w-full overflow-hidden rounded-full">
           <Liquid colors={COLORS} isHovered={isHovered} />
         </div>
       </div>
-      <div className="absolute inset-0 overflow-hidden rounded-full bg-black">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-full bg-black">
         <Liquid colors={COLORS} isHovered={isHovered} />
         <span className="absolute inset-0 rounded-full bg-black/45" />
         <span className="absolute inset-0 rounded-full border border-white/25 mix-blend-overlay" />
