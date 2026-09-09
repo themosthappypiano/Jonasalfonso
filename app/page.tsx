@@ -30,7 +30,11 @@ const AgencySystemsSection = dynamic(
   { loading: () => <SectionPlaceholder /> },
 );
 
-import { DynamicButton } from "@/components/custom/DynamicButton";
+import { BookCallLiquidButton } from "@/components/ui/button-1";
+
+const ScrollBand = dynamic(() =>
+  import("@/components/custom/ScrollBand").then((mod) => mod.ScrollBand),
+);
 
 const BookCallSection = dynamic(() =>
   import("@/components/custom/BookCallSection").then(
@@ -59,9 +63,15 @@ export default function Home() {
 
       <HeroSummarySection />
 
-      <section className="flex justify-center py-12">
-        <DynamicButton href="/portfolio">View the work</DynamicButton>
+      <section className="flex justify-center bg-black py-12">
+        <BookCallLiquidButton
+          href="/portfolio"
+          label="View the work"
+          variant="yellow"
+        />
       </section>
+
+      <ScrollBand />
 
       <BentoSection />
 

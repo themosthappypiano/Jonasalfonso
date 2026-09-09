@@ -59,26 +59,43 @@ const modelLogos = [
 ];
 
 export function ScrollingAnimation() {
-  const [scrollY, setScrollY] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(1200);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const handleResize = () => setWindowWidth(window.innerWidth);
+    // Drive the animation off a viewport-relative runway so it completes at
+    // the same *visual* point on a phone and a laptop. A hardcoded pixel
+    // distance finishes far too late on short mobile viewports.
+    let frame = 0;
 
-    handleScroll();
-    handleResize();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleResize);
+    const compute = () => {
+      frame = 0;
+      const runway = Math.max(window.innerHeight * 0.6, 320);
+      setProgress(Math.min(Math.max(window.scrollY / runway, 0), 1));
+    };
+
+    // rAF-throttle: scroll fires far more often than we can paint.
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(compute);
+    };
+
+    compute();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 
-  const animationProgress = Math.min(scrollY / 500, 1);
-  const expandRadius = animationProgress * Math.min(windowWidth * 0.31, 245);
+  const animationProgress = progress;
+  const expandRadius =
+    animationProgress *
+    (typeof window === "undefined"
+      ? 245
+      : Math.min(window.innerWidth * 0.31, 245));
   const ringOpacity = Math.min(animationProgress * 1.7, 1);
   const centerOpacity = Math.min(
     Math.max((animationProgress - 0.04) / 0.18, 0),
@@ -86,15 +103,15 @@ export function ScrollingAnimation() {
   );
 
   return (
-    <div className="pointer-events-none absolute left-1/2 top-[48%] z-10 h-[min(82vw,620px)] w-[min(82vw,620px)] -translate-x-1/2 -translate-y-1/2">
+    <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 h-[min(82vw,620px)] w-[min(82vw,620px)] -translate-x-1/2 -translate-y-1/2">
       <div
         className="absolute inset-0 rounded-full border border-[#E1E0CC]/15 transition-opacity duration-500"
-        style={{ opacity: scrollY > 300 ? ringOpacity : 0 }}
+        style={{ opacity: animationProgress > 0.55 ? ringOpacity : 0 }}
       />
 
       <div
         className="absolute left-1/2 top-1/2 h-[min(62vw,470px)] w-[min(62vw,470px)] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#E1E0CC]/20 transition-opacity duration-500"
-        style={{ opacity: scrollY > 120 ? ringOpacity : 0 }}
+        style={{ opacity: animationProgress > 0.22 ? ringOpacity : 0 }}
       />
 
       <div

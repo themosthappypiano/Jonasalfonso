@@ -295,19 +295,38 @@ interface BookCallLiquidButtonProps {
   className?: string;
   href?: string;
   label?: string;
+  /** "blue" = Book a call, "yellow" = View the work */
+  variant?: "blue" | "yellow";
 }
 
 export function BookCallLiquidButton({
   className,
   href = "mailto:hello@jonasalfonso.com",
   label = "Book a call",
+  variant = "blue",
 }: BookCallLiquidButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const isYellow = variant === "yellow";
+  // Same source palette both ways — the yellow is produced by the filter below,
+  // not by a second colour set (a pre-yellowed palette gets inverted to blue).
+  const colors = COLORS;
+
+  // The liquid layers composite with `mix-blend-difference`, which inverts any
+  // palette we feed in — a yellow gradient renders back out as blue (white
+  // minus yellow IS blue). So instead of fighting the blend math with colours,
+  // rotate the *rendered* result into the yellow band. Identical motion, right
+  // hue. Saturate compensates for the wash the rotation introduces.
+  const liquidFilter = isYellow
+    ? { filter: "hue-rotate(178deg) saturate(1.7)" }
+    : undefined;
 
   return (
     <a
       className={cn(
-        "group relative inline-flex h-12 w-[168px] items-center justify-center rounded-full border border-[#E1E0CC]/80 bg-black text-sm font-semibold text-white shadow-[0_12px_36px_rgba(0,0,0,0.38)] outline-none transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-[#E1E0CC] cursor-pointer z-20",
+        "group relative inline-flex h-12 w-[168px] items-center justify-center rounded-full border bg-black text-sm font-semibold text-white shadow-[0_12px_36px_rgba(0,0,0,0.38)] outline-none transition-transform hover:scale-[1.02] focus-visible:ring-2 cursor-pointer z-20",
+        isYellow
+          ? "border-[#ada332]/80 focus-visible:ring-[#ada332]"
+          : "border-[#E1E0CC]/80 focus-visible:ring-[#E1E0CC]",
         className,
       )}
       href={href}
@@ -315,18 +334,29 @@ export function BookCallLiquidButton({
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="pointer-events-none absolute inset-[-7px] rounded-full opacity-75 blur-[16px]">
-        <div className="relative h-full w-full overflow-hidden rounded-full">
-          <Liquid colors={COLORS} isHovered={isHovered} />
+        <div
+          className="relative h-full w-full overflow-hidden rounded-full"
+          style={liquidFilter}
+        >
+          <Liquid colors={colors} isHovered={isHovered} />
         </div>
       </div>
-      <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-full bg-black">
-        <Liquid colors={COLORS} isHovered={isHovered} />
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-full bg-black"
+        style={liquidFilter}
+      >
+        <Liquid colors={colors} isHovered={isHovered} />
         <span className="absolute inset-0 rounded-full bg-black/45" />
         <span className="absolute inset-0 rounded-full border border-white/25 mix-blend-overlay" />
       </div>
       <span className="relative z-10 flex items-center gap-2 pl-1">
         {label}
-        <span className="flex size-8 items-center justify-center rounded-full bg-[#E1E0CC] text-black transition-transform group-hover:translate-x-0.5">
+        <span
+          className={cn(
+            "flex size-8 items-center justify-center rounded-full text-black transition-transform group-hover:translate-x-0.5",
+            isYellow ? "bg-[#ada332]" : "bg-[#E1E0CC]",
+          )}
+        >
           <ArrowRight className="size-4" />
         </span>
       </span>

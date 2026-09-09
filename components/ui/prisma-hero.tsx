@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import type React from "react";
-import { DynamicButton } from "@/components/custom/DynamicButton";
 import { BookCallLiquidButton } from "@/components/ui/button-1";
 import { ScrollingAnimation } from "@/components/ui/scrolling-animation";
 
@@ -63,8 +62,8 @@ const navItems = [
 
 const PrismaHero = () => {
   return (
-    <section className="relative h-[100svh] w-full bg-black md:h-[175vh]">
-      <div className="relative flex h-[100svh] w-full flex-col justify-between overflow-hidden md:sticky md:top-0 md:h-screen">
+    <section className="relative h-[165svh] w-full bg-black md:h-[175vh]">
+      <div className="relative flex h-[100svh] w-full flex-col justify-between overflow-hidden sticky top-0 md:h-screen">
         <div className="absolute inset-0 bg-[url('/hero-mobile-poster.jpg')] bg-cover bg-center md:hidden" />
         {/* Background video */}
         <video
@@ -83,7 +82,9 @@ const PrismaHero = () => {
         {/* Gradient overlay */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/85 z-10" />
 
-        <div className="pointer-events-none relative z-10">
+        {/* Must be inset-0 (not a zero-height `relative` box) so the
+            ScrollingAnimation's `top-1/2` resolves against the full hero. */}
+        <div className="pointer-events-none absolute inset-0 z-10">
           <ScrollingAnimation />
         </div>
 
@@ -143,12 +144,12 @@ const PrismaHero = () => {
                   href="#book-call"
                   className="w-full min-[420px]:w-auto justify-center min-h-[48px]"
                 />
-                <DynamicButton
-                  className="w-full min-[420px]:w-auto"
+                <BookCallLiquidButton
+                  className="w-full min-[420px]:w-auto justify-center min-h-[48px]"
                   href="/portfolio"
-                >
-                  View the work
-                </DynamicButton>
+                  label="View the work"
+                  variant="yellow"
+                />
               </motion.div>
             </div>
           </div>
