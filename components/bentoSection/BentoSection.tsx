@@ -1,23 +1,24 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
 import { ClockIcon, MessageCircleMore, ShieldIcon } from "lucide-react";
-import { useRef } from "react";
 import { AnimatedListSection } from "@/components/bentoSection/AnimatedListSection";
 import { OrbitingCirclesDemo } from "@/components/bentoSection/OrbitingCirclesDemo";
+import StackingCards, {
+  StackingCardItem,
+} from "@/components/ui/stacking-cards";
 import { Stats } from "@/components/ui/statistics-card";
 import { cn } from "@/lib/utils";
 
 /**
- * Scroll-pinned capability reveal.
+ * Capabilities as a pinned, stacking card deck.
  *
- * Replaces the old horizontal bento carousel. Copy is unchanged from the
- * previous BentoGrid `pages` array — only the presentation is new.
+ * Each card sticks to the top of the viewport and the next one slides over it,
+ * scaling the previous card down — the page reads as a deck being dealt rather
+ * than a list being scrolled. Structurally different from every other section
+ * on the page, which is the point.
  *
- * Pattern sourced from 21st.dev "Sticky Scroll Reveal" (id 952), rebuilt to
- * drive off window scroll rather than an inner scroll container: the catalog
- * version nests its own `overflow-y-auto` box, which traps the page scroll on
- * touch devices and is exactly the kind of thing that breaks on a phone.
+ * Sourced from 21st.dev "Stacking Cards" (id 25275).
+ * Copy is unchanged from the original bento carousel.
  */
 
 const capabilities = [
@@ -27,6 +28,7 @@ const capabilities = [
     title: "Sales agents that convert",
     description:
       "A sales agent trained on your calls, CRM notes, scripts, FAQs, and best objections so it sells like your best human rep.",
+    tint: "from-[#ada332]/25",
     visual: <Stats />,
   },
   {
@@ -35,11 +37,8 @@ const capabilities = [
     title: "Enterprise security",
     description:
       "Connects securely with the business tools your team already uses, without turning your automation into a black box.",
-    visual: (
-      <div className="w-full scale-90 sm:scale-100">
-        <OrbitingCirclesDemo />
-      </div>
-    ),
+    tint: "from-[#2979FF]/25",
+    visual: <OrbitingCirclesDemo />,
   },
   {
     eyebrow: "Visibility",
@@ -47,94 +46,75 @@ const capabilities = [
     title: "Real-time monitoring",
     description:
       "Track performance, monitor workflows, and know exactly what your agents are doing across leads, calls, and bookings.",
+    tint: "from-[#00E676]/20",
     visual: (
-      <div className="flex h-full w-full items-center justify-center">
-        <AnimatedListSection
-          className="h-[300px] max-w-md md:h-[380px]"
-          showFade={false}
-        />
-      </div>
+      <AnimatedListSection className="h-[280px] w-full" showFade={false} />
     ),
   },
 ];
-
-function CapabilityRow({
-  capability,
-  index,
-}: {
-  capability: (typeof capabilities)[number];
-  index: number;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  // Subtle parallax on the visual; the text stays put so it remains readable.
-  const y = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
-  const Icon = capability.icon;
-  const flip = index % 2 === 1;
-
-  return (
-    <div
-      ref={ref}
-      className="grid items-center gap-8 border-t border-white/10 py-14 md:grid-cols-2 md:gap-16 md:py-24"
-    >
-      <motion.div
-        className={cn("order-2", flip ? "md:order-2" : "md:order-1")}
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="mb-5 flex size-11 items-center justify-center rounded-full bg-white text-black md:size-12">
-          <Icon className="size-6" strokeWidth={1.5} />
-        </div>
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
-          {capability.eyebrow}
-        </p>
-        <h3 className="max-w-xl text-3xl font-semibold leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl">
-          {capability.title}
-        </h3>
-        <p className="mt-5 max-w-lg text-sm leading-relaxed text-white/65 sm:text-base md:text-lg">
-          {capability.description}
-        </p>
-      </motion.div>
-
-      <motion.div
-        className={cn(
-          "order-1 flex min-h-[280px] items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white p-4 md:min-h-[360px] md:p-8",
-          flip ? "md:order-1" : "md:order-2",
-        )}
-        style={{ y }}
-        initial={{ opacity: 0, scale: 0.96 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {capability.visual}
-      </motion.div>
-    </div>
-  );
-}
 
 export function BentoSection({ className }: { className?: string }) {
   return (
     <section
       id="features"
       data-slot="section"
-      className={cn("relative bg-black px-5 py-16 sm:px-8 md:py-24", className)}
+      className={cn("relative bg-black", className)}
     >
-      <div className="mx-auto w-full max-w-6xl">
-        {capabilities.map((capability, index) => (
-          <CapabilityRow
-            capability={capability}
-            index={index}
-            key={capability.title}
-          />
-        ))}
-      </div>
+      <StackingCards
+        className="relative w-full"
+        scaleMultiplier={0.04}
+        totalCards={capabilities.length}
+      >
+        {capabilities.map((capability, index) => {
+          const Icon = capability.icon;
+          return (
+            <StackingCardItem
+              className="h-[95svh] md:h-screen"
+              index={index}
+              key={capability.title}
+            >
+              <div className="mx-auto h-full w-full max-w-6xl px-4 sm:px-6">
+                <div
+                  className={cn(
+                    "relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/12 bg-gradient-to-b to-black shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.9)] md:flex-row",
+                    capability.tint,
+                  )}
+                  // Cards physically stack, so each one must be fully opaque or
+                  // the card beneath bleeds its text through this one.
+                  style={{ backgroundColor: "#000" }}
+                >
+                  <div className="flex flex-1 flex-col justify-center gap-4 p-7 sm:p-10 md:p-14">
+                    <div className="flex items-center gap-4">
+                      <div className="flex size-11 items-center justify-center rounded-full bg-white text-black md:size-12">
+                        <Icon className="size-6" strokeWidth={1.5} />
+                      </div>
+                      <span className="text-6xl font-bold leading-none text-white/10 md:text-7xl">
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/45">
+                      {capability.eyebrow}
+                    </p>
+                    <h3 className="max-w-xl text-3xl font-semibold leading-[1.03] tracking-tight text-white sm:text-4xl md:text-6xl">
+                      {capability.title}
+                    </h3>
+                    <p className="max-w-lg text-sm leading-relaxed text-white/65 sm:text-base md:text-lg">
+                      {capability.description}
+                    </p>
+                  </div>
+
+                  <div className="relative flex flex-1 items-center justify-center overflow-hidden p-4 pb-7 sm:p-8 md:p-10">
+                    <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white p-3 md:p-6">
+                      {capability.visual}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </StackingCardItem>
+          );
+        })}
+      </StackingCards>
     </section>
   );
 }

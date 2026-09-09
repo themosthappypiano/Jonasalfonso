@@ -1,17 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Bot } from "lucide-react";
+import { useState } from "react";
 import { BookCallLiquidButton } from "@/components/ui/button-1";
-import { GlowGrid } from "@/components/ui/glow-card";
-import { TiltCard } from "@/components/ui/tilt-card";
-import { ServicesBeam } from "./ServicesBeam";
+import { cn } from "@/lib/utils";
 
 /**
- * Services section restyled onto 3D tilt cards.
- * Adapted from 21st.dev "Tilt Card" (id 12245) + the glow-grid pointer tracking.
- * Every service title, badge, and description is unchanged from the previous
- * version — only the container styling is new.
+ * Services as a horizontal expanding accordion.
+ *
+ * Panels are collapsed to slivers; hovering (or tapping) one expands it and
+ * reveals its copy. Replaces the previous card grid entirely — no grid on the
+ * page reads the same way twice.
+ *
+ * Sourced from 21st.dev "Expand on hover" (id 7276), rebuilt around text
+ * panels instead of the catalog's stock photography, and given a real vertical
+ * layout on mobile where a row of slivers would be unusable.
+ *
+ * Every service title, badge, and description is unchanged.
  */
 
 const services = [
@@ -58,6 +64,8 @@ const services = [
 ];
 
 export function AgencySystemsSection() {
+  const [active, setActive] = useState(0);
+
   return (
     <section
       id="services"
@@ -65,110 +73,182 @@ export function AgencySystemsSection() {
       aria-labelledby="agency-systems-title"
     >
       <div className="mx-auto w-full max-w-6xl">
-        <div className="mb-12 grid items-center gap-10 md:mb-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
-          <motion.div
-            className="space-y-5"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        <motion.div
+          className="mb-10 flex flex-col gap-5 md:mb-14 md:max-w-2xl"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+            <Bot className="size-3.5" />
+            Our Services
+          </div>
+          <h2
+            id="agency-systems-title"
+            className="text-[1.75rem] font-bold leading-tight text-white sm:text-4xl md:text-5xl"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
-              <Bot className="size-3.5" />
-              Our Services
-            </div>
-            <h2
-              id="agency-systems-title"
-              className="text-[1.75rem] font-bold leading-tight text-white sm:text-4xl md:text-5xl"
-            >
-              Intelligent systems for{" "}
-              <span className="font-normal italic text-white/55">
-                modern business
-              </span>
-            </h2>
-            <p className="max-w-lg text-base leading-7 text-white/65">
-              Each solution automates repetitive work, captures more leads, and
-              keeps your business operating around the clock.
-            </p>
-            <BookCallLiquidButton href="#book-call" />
-          </motion.div>
+            Intelligent systems for{" "}
+            <span className="font-normal italic text-white/55">
+              modern business
+            </span>
+          </h2>
+          <p className="max-w-lg text-base leading-7 text-white/65">
+            Each solution automates repetitive work, captures more leads, and
+            keeps your business operating around the clock.
+          </p>
+          <BookCallLiquidButton href="#book-call" />
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <ServicesBeam />
-          </motion.div>
-        </div>
-
-        <GlowGrid className="gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              key={service.title}
-              transition={{
-                duration: 0.55,
-                delay: index * 0.06,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              viewport={{ once: true, margin: "-60px" }}
-              whileInView={{ opacity: 1, y: 0 }}
-            >
-              <TiltCard
-                className="h-full rounded-2xl border border-white/10 bg-white/[0.02]"
-                effect="gravitate"
-                scale={1.02}
-                tiltLimit={7}
+        {/* Desktop: expanding accordion. */}
+        <div className="hidden gap-2 md:flex md:h-[26rem]">
+          {services.map((service, index) => {
+            const isActive = active === index;
+            return (
+              <motion.button
+                animate={{ flexGrow: isActive ? 6 : 1 }}
+                aria-expanded={isActive}
+                className={cn(
+                  "group relative min-w-0 cursor-pointer overflow-hidden rounded-3xl border text-left transition-colors",
+                  isActive
+                    ? "border-white/20"
+                    : "border-white/10 hover:border-white/20",
+                )}
+                key={service.title}
+                onClick={() => setActive(index)}
+                onFocus={() => setActive(index)}
+                onMouseEnter={() => setActive(index)}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                type="button"
               >
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 opacity-40"
+                  className="absolute inset-0"
                   style={{
-                    background: `radial-gradient(120% 80% at 50% 0%, ${service.accent}22, transparent 65%)`,
+                    background: `linear-gradient(180deg, ${service.accent}1f, transparent 65%), #000`,
                   }}
                 />
-                <div className="relative z-10 flex h-full flex-col gap-4 p-6 sm:p-7">
-                  <div className="flex items-center justify-between">
-                    <span
-                      className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium"
-                      style={{
-                        borderColor: `${service.accent}55`,
-                        color: service.accent,
-                        backgroundColor: `${service.accent}12`,
-                      }}
+
+                {/* Collapsed: vertical title. Expanded: full copy. */}
+                <AnimatePresence mode="wait">
+                  {isActive ? (
+                    <motion.div
+                      animate={{ opacity: 1 }}
+                      className="relative z-10 flex h-full flex-col justify-between p-7"
+                      exit={{ opacity: 0 }}
+                      initial={{ opacity: 0 }}
+                      key="open"
+                      transition={{ duration: 0.3, delay: 0.12 }}
                     >
+                      <div className="flex items-start justify-between">
+                        <span
+                          className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium"
+                          style={{
+                            borderColor: `${service.accent}55`,
+                            color: service.accent,
+                            backgroundColor: `${service.accent}12`,
+                          }}
+                        >
+                          <span
+                            className="size-1.5 rounded-full"
+                            style={{ backgroundColor: service.accent }}
+                          />
+                          {service.badgeText}
+                        </span>
+                        <span className="text-xs font-medium text-white/30">
+                          {service.index}
+                        </span>
+                      </div>
+
+                      <div>
+                        <h3 className="text-3xl font-semibold text-white lg:text-4xl">
+                          {service.title}
+                        </h3>
+                        <p className="mt-3 max-w-md text-sm leading-6 text-white/60">
+                          {service.description}
+                        </p>
+                        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white/80">
+                          Book a call
+                          <ArrowUpRight className="size-4" />
+                        </span>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      animate={{ opacity: 1 }}
+                      className="relative z-10 flex h-full flex-col items-center justify-between py-7"
+                      exit={{ opacity: 0 }}
+                      initial={{ opacity: 0 }}
+                      key="closed"
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className="text-xs font-medium text-white/30">
+                        {service.index}
+                      </span>
                       <span
-                        className="size-1.5 rounded-full"
+                        className="whitespace-nowrap text-lg font-semibold tracking-tight text-white/70"
+                        style={{
+                          writingMode: "vertical-rl",
+                          transform: "rotate(180deg)",
+                        }}
+                      >
+                        {service.title}
+                      </span>
+                      <span
+                        className="size-2 rounded-full"
                         style={{ backgroundColor: service.accent }}
                       />
-                      {service.badgeText}
-                    </span>
-                    <span className="text-xs font-medium text-white/25">
-                      {service.index}
-                    </span>
-                  </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            );
+          })}
+        </div>
 
-                  <h3 className="text-xl font-semibold text-white sm:text-2xl">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm leading-6 text-white/60">
-                    {service.description}
-                  </p>
-
-                  <a
-                    className="mt-auto inline-flex w-fit items-center gap-1.5 pt-2 text-sm font-semibold text-white/80 transition-colors hover:text-white"
-                    href="#book-call"
-                  >
-                    Book a call
-                    <ArrowUpRight className="size-4" />
-                  </a>
-                </div>
-              </TiltCard>
-            </motion.div>
+        {/* Mobile: full-width panels. Slivers are unusable on a phone. */}
+        <div className="flex flex-col gap-3 md:hidden">
+          {services.map((service) => (
+            <a
+              className="relative block overflow-hidden rounded-2xl border border-white/12 p-6"
+              href="#book-call"
+              key={service.title}
+              style={{
+                background: `linear-gradient(160deg, ${service.accent}1f, transparent 70%), #000`,
+              }}
+            >
+              <div className="mb-4 flex items-start justify-between">
+                <span
+                  className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium"
+                  style={{
+                    borderColor: `${service.accent}55`,
+                    color: service.accent,
+                    backgroundColor: `${service.accent}12`,
+                  }}
+                >
+                  <span
+                    className="size-1.5 rounded-full"
+                    style={{ backgroundColor: service.accent }}
+                  />
+                  {service.badgeText}
+                </span>
+                <span className="text-xs font-medium text-white/30">
+                  {service.index}
+                </span>
+              </div>
+              <h3 className="text-2xl font-semibold text-white">
+                {service.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-white/60">
+                {service.description}
+              </p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white/80">
+                Book a call
+                <ArrowUpRight className="size-4" />
+              </span>
+            </a>
           ))}
-        </GlowGrid>
+        </div>
       </div>
     </section>
   );
