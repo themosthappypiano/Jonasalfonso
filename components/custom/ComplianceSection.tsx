@@ -46,7 +46,7 @@ const complianceItems = [
 const ComplianceSection = () => {
   return (
     <section
-      className="relative bg-black text-white"
+      className="relative bg-[#15151c] text-white"
       aria-labelledby="compliance-section-title"
     >
       {/* NOTE: no `overflow-hidden` on this section. An overflow clip on any
@@ -54,13 +54,18 @@ const ComplianceSection = () => {
           which kills the pinned horizontal track below. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden opacity-70"
+        className="pointer-events-none absolute inset-0 overflow-hidden"
       >
+        {/* `background-attachment: fixed` keeps the light viewport-relative.
+            The section is 320vh tall for the pinned track, so a normally
+            positioned gradient puts its bright spots off-screen and the
+            middle of the scroll — the part you actually look at — goes dark. */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(60% 40% at 20% 10%, rgba(41,121,255,0.18), transparent 70%)",
+              "radial-gradient(80vw 70vh at 12% 18%, rgba(41,121,255,0.42), transparent 65%), radial-gradient(70vw 65vh at 90% 82%, rgba(173,163,50,0.30), transparent 65%)",
+            backgroundAttachment: "fixed",
           }}
         />
       </div>
@@ -69,7 +74,7 @@ const ComplianceSection = () => {
           sections don't share a silhouette. */}
       <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-5 px-5 pt-16 pb-10 text-center sm:px-8 md:pt-24">
         <motion.span
-          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium text-white"
+          className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3 py-1 text-xs font-medium text-white"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -88,11 +93,11 @@ const ComplianceSection = () => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           Complete Compliance &amp; Security{" "}
-          <span className="font-normal italic text-white/55">Readiness</span>
+          <span className="font-normal italic text-white/70">Readiness</span>
         </motion.h2>
 
         <motion.p
-          className="max-w-xl text-base leading-7 text-white/65"
+          className="max-w-xl text-base leading-7 text-white/80"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -110,10 +115,10 @@ const ComplianceSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <span className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-xs font-semibold uppercase text-white/70">
+          <span className="rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-xs font-semibold uppercase text-white/85">
             GDPR Ready
           </span>
-          <span className="rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-xs font-semibold uppercase text-white/70">
+          <span className="rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-xs font-semibold uppercase text-white/85">
             HIPAA Aware
           </span>
         </motion.div>
@@ -127,14 +132,14 @@ const ComplianceSection = () => {
         <div className="flex h-full items-center gap-6 px-[8vw]">
           {complianceItems.map((item, index) => (
             <article
-              className="relative flex h-[62vh] w-[78vw] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-white/12 bg-gradient-to-br from-white/[0.07] to-transparent p-10 lg:w-[46vw]"
+              className="relative flex h-[62vh] w-[78vw] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-white/25 bg-gradient-to-br from-white/[0.26] via-white/[0.14] to-white/[0.07] p-10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur-sm lg:w-[46vw]"
               key={item.title}
             >
               <div className="flex items-start justify-between">
-                <div className="flex size-16 items-center justify-center rounded-2xl border border-white/15 bg-white/5 text-white/85">
+                <div className="flex size-16 items-center justify-center rounded-2xl border border-white/35 bg-white/20 text-white">
                   <item.icon className="size-8" strokeWidth={1.4} />
                 </div>
-                <span className="text-7xl font-bold leading-none text-white/8">
+                <span className="text-7xl font-bold leading-none text-white/30">
                   0{index + 1}
                 </span>
               </div>
@@ -143,7 +148,7 @@ const ComplianceSection = () => {
                 <h3 className="text-3xl font-bold text-white lg:text-4xl">
                   {item.title}
                 </h3>
-                <p className="mt-4 max-w-md text-base leading-7 text-white/60">
+                <p className="mt-4 max-w-md text-base leading-7 text-white/85">
                   {item.description}
                 </p>
               </div>
@@ -157,19 +162,19 @@ const ComplianceSection = () => {
       <div className="relative z-10 flex flex-col gap-4 px-5 pb-4 md:hidden">
         {complianceItems.map((item, index) => (
           <article
-            className="relative overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-br from-white/[0.07] to-transparent p-6"
+            className="relative overflow-hidden rounded-2xl border border-white/25 bg-gradient-to-br from-white/[0.26] via-white/[0.14] to-white/[0.07] p-6 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] backdrop-blur-sm"
             key={item.title}
           >
             <div className="mb-4 flex items-start justify-between">
-              <div className="flex size-12 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white/85">
+              <div className="flex size-12 items-center justify-center rounded-xl border border-white/35 bg-white/20 text-white">
                 <item.icon className="size-6" strokeWidth={1.4} />
               </div>
-              <span className="text-4xl font-bold leading-none text-white/10">
+              <span className="text-4xl font-bold leading-none text-white/30">
                 0{index + 1}
               </span>
             </div>
             <h3 className="text-xl font-bold text-white">{item.title}</h3>
-            <p className="mt-3 text-sm leading-6 text-white/60">
+            <p className="mt-3 text-sm leading-6 text-white/85">
               {item.description}
             </p>
           </article>

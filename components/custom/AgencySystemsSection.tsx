@@ -69,7 +69,7 @@ export function AgencySystemsSection() {
   return (
     <section
       id="services"
-      className="relative bg-black px-5 py-16 text-white sm:px-8 md:py-24"
+      className="relative bg-[#15151c] px-5 py-16 text-white sm:px-8 md:py-24"
       aria-labelledby="agency-systems-title"
     >
       <div className="mx-auto w-full max-w-6xl">
@@ -80,7 +80,7 @@ export function AgencySystemsSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3 py-1 text-xs font-medium text-white/90">
             <Bot className="size-3.5" />
             Our Services
           </div>
@@ -89,11 +89,11 @@ export function AgencySystemsSection() {
             className="text-[1.75rem] font-bold leading-tight text-white sm:text-4xl md:text-5xl"
           >
             Intelligent systems for{" "}
-            <span className="font-normal italic text-white/55">
+            <span className="font-normal italic text-white/70">
               modern business
             </span>
           </h2>
-          <p className="max-w-lg text-base leading-7 text-white/65">
+          <p className="max-w-lg text-base leading-7 text-white/80">
             Each solution automates repetitive work, captures more leads, and
             keeps your business operating around the clock.
           </p>
@@ -111,8 +111,8 @@ export function AgencySystemsSection() {
                 className={cn(
                   "group relative min-w-0 cursor-pointer overflow-hidden rounded-3xl border text-left transition-colors",
                   isActive
-                    ? "border-white/20"
-                    : "border-white/10 hover:border-white/20",
+                    ? "border-white/30"
+                    : "border-white/18 hover:border-white/30",
                 )}
                 key={service.title}
                 onClick={() => setActive(index)}
@@ -125,7 +125,7 @@ export function AgencySystemsSection() {
                   aria-hidden="true"
                   className="absolute inset-0"
                   style={{
-                    background: `linear-gradient(180deg, ${service.accent}1f, transparent 65%), #000`,
+                    background: `linear-gradient(180deg, ${service.accent}80, ${service.accent}26 50%, rgba(255,255,255,0.06) 85%), #1b1b23`,
                   }}
                 />
 
@@ -146,7 +146,7 @@ export function AgencySystemsSection() {
                           style={{
                             borderColor: `${service.accent}55`,
                             color: service.accent,
-                            backgroundColor: `${service.accent}12`,
+                            backgroundColor: `${service.accent}26`,
                           }}
                         >
                           <span
@@ -155,7 +155,7 @@ export function AgencySystemsSection() {
                           />
                           {service.badgeText}
                         </span>
-                        <span className="text-xs font-medium text-white/30">
+                        <span className="text-xs font-medium text-white/55">
                           {service.index}
                         </span>
                       </div>
@@ -164,10 +164,10 @@ export function AgencySystemsSection() {
                         <h3 className="text-3xl font-semibold text-white lg:text-4xl">
                           {service.title}
                         </h3>
-                        <p className="mt-3 max-w-md text-sm leading-6 text-white/60">
+                        <p className="mt-3 max-w-md text-sm leading-6 text-white/90">
                           {service.description}
                         </p>
-                        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white/80">
+                        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-white">
                           Book a call
                           <ArrowUpRight className="size-4" />
                         </span>
@@ -182,11 +182,11 @@ export function AgencySystemsSection() {
                       key="closed"
                       transition={{ duration: 0.2 }}
                     >
-                      <span className="text-xs font-medium text-white/30">
+                      <span className="text-xs font-medium text-white/55">
                         {service.index}
                       </span>
                       <span
-                        className="whitespace-nowrap text-lg font-semibold tracking-tight text-white/70"
+                        className="whitespace-nowrap text-lg font-semibold tracking-tight text-white/90"
                         style={{
                           writingMode: "vertical-rl",
                           transform: "rotate(180deg)",
@@ -210,11 +210,11 @@ export function AgencySystemsSection() {
         <div className="flex flex-col gap-3 md:hidden">
           {services.map((service) => (
             <a
-              className="relative block overflow-hidden rounded-2xl border border-white/12 p-6"
+              className="relative block overflow-hidden rounded-2xl border border-white/20 p-6"
               href="#book-call"
               key={service.title}
               style={{
-                background: `linear-gradient(160deg, ${service.accent}1f, transparent 70%), #000`,
+                background: `linear-gradient(160deg, ${service.accent}80, ${service.accent}26 50%, rgba(255,255,255,0.06) 85%), #1b1b23`,
               }}
             >
               <div className="mb-4 flex items-start justify-between">
@@ -223,7 +223,7 @@ export function AgencySystemsSection() {
                   style={{
                     borderColor: `${service.accent}55`,
                     color: service.accent,
-                    backgroundColor: `${service.accent}12`,
+                    backgroundColor: `${service.accent}26`,
                   }}
                 >
                   <span
@@ -232,17 +232,17 @@ export function AgencySystemsSection() {
                   />
                   {service.badgeText}
                 </span>
-                <span className="text-xs font-medium text-white/30">
+                <span className="text-xs font-medium text-white/55">
                   {service.index}
                 </span>
               </div>
               <h3 className="text-2xl font-semibold text-white">
                 {service.title}
               </h3>
-              <p className="mt-3 text-sm leading-6 text-white/60">
+              <p className="mt-3 text-sm leading-6 text-white/90">
                 {service.description}
               </p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white/80">
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white">
                 Book a call
                 <ArrowUpRight className="size-4" />
               </span>
