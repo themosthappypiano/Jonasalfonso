@@ -301,7 +301,7 @@ interface BookCallLiquidButtonProps {
 
 export function BookCallLiquidButton({
   className,
-  href = "mailto:hello@jonasalfonso.com",
+  href = "mailto:jonas@jonasalfonso.com",
   label = "Book a call",
   variant = "blue",
 }: BookCallLiquidButtonProps) {

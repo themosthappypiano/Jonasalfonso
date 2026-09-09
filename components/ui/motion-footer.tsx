@@ -367,7 +367,7 @@ export function CinematicFooter() {
             <div className="order-1 flex items-center gap-3 md:order-2">
               <MagneticButton
                 as="a"
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/jonas-alfonso/"
                 target="_blank"
                 rel="noreferrer"
                 className="footer-glass-pill flex h-11 w-11 items-center justify-center rounded-full text-white/80 hover:text-white md:h-12 md:w-12"
@@ -377,7 +377,7 @@ export function CinematicFooter() {
               </MagneticButton>
               <MagneticButton
                 as="a"
-                href="https://wa.me/"
+                href="https://wa.me/34642086961"
                 target="_blank"
                 rel="noreferrer"
                 className="footer-glass-pill flex h-11 w-11 items-center justify-center rounded-full text-white/80 hover:text-white md:h-12 md:w-12"
