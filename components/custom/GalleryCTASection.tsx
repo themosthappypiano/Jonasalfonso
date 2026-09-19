@@ -6,7 +6,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Mail } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -97,12 +97,19 @@ export function GalleryCTASection() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="mailto:jonas@jonasalfonso.com?subject=System%20build%20inquiry"
+              href="#book-call"
               className="group inline-flex items-center gap-3 rounded-full bg-[#111411] px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-1"
+            >
+              <CalendarDays className="size-4" />
+              Book a call
+              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href="mailto:jonas@jonasalfonso.com?subject=System%20build%20inquiry"
+              className="inline-flex items-center gap-2 rounded-full border border-black/20 px-7 py-4 text-sm font-semibold transition-colors hover:border-black hover:bg-white/50"
             >
               <Mail className="size-4" />
               Discuss a system
-              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
             <a
               href="https://github.com/themosthappypiano"

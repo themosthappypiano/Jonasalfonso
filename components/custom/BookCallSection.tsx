@@ -38,6 +38,20 @@ export function BookCallSection() {
     }
   }, []);
 
+  // Escape must work regardless of focus, so listen on the document rather
+  // than the dialog element (which never reliably holds focus).
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, close]);
+
   if (!isOpen) return null;
 
   return (

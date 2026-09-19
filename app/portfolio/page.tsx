@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { BookCallSection } from "@/components/custom/BookCallSection";
 import { CinematicPortfolioHero } from "@/components/custom/CinematicPortfolioHero";
 import { GalleryCTASection } from "@/components/custom/GalleryCTASection";
 import { PortfolioCaseStudiesSection } from "@/components/custom/PortfolioCaseStudiesSection";
@@ -11,6 +13,7 @@ export default function HomePage() {
       <PortfolioCaseStudiesSection />
       {/* <TestimonialMarqueeSection /> */}
       <GalleryCTASection />
+      <BookCallSection />
       <footer className="border-t border-white/10 bg-[#070907] px-5 py-8 text-white sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -20,6 +23,9 @@ export default function HomePage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link className="transition-colors hover:text-white" href="/">
+              Home
+            </Link>
             <a
               className="transition-colors hover:text-white"
               href="mailto:jonas@jonasalfonso.com"

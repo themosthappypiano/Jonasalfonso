@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 
 if (typeof window !== "undefined") {
@@ -206,12 +207,12 @@ export function CinematicPortfolioHero() {
       />
 
       <nav className="absolute inset-x-0 top-0 z-40 mx-auto flex max-w-7xl items-center justify-between px-5 py-6 sm:px-8">
-        <a
-          href="#top"
+        <Link
+          href="/"
           className="text-sm font-semibold tracking-tight text-white"
         >
           JONAS ALFONSO
-        </a>
+        </Link>
         <div className="flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/70 sm:gap-8 sm:text-[11px] sm:tracking-[0.16em]">
           <a href="#work" className="transition-colors hover:text-white">
             Work
@@ -224,6 +225,12 @@ export function CinematicPortfolioHero() {
           </a>
           <a href="#contact" className="transition-colors hover:text-white">
             Contact
+          </a>
+          <a
+            href="#book-call"
+            className="rounded-full bg-[#9ff8bc] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#04180c] transition-colors hover:bg-white sm:px-4 sm:text-[11px]"
+          >
+            Book a call
           </a>
         </div>
       </nav>
